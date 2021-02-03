@@ -22,3 +22,7 @@ __pycache__
 *.meta
 
 Logs/
+
+Packages/
+
+flubby.sln
