@@ -28,6 +28,15 @@ public class Node : MonoBehaviour
 
     }
 
+    public bool isAlreadyConnectedTo(Node node)
+    {
+        foreach (Node n in linked_nodes)
+            if (n.sphere == node.sphere)
+                return true;
+
+        return false;
+    }
+
     public void link(Node other, SpringJoint2D spring)
     {
         springs.Add(spring);
