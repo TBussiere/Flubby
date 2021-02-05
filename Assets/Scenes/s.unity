@@ -2219,6 +2219,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5071170867580249834}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &549250682
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1610132332}
+    m_Modifications:
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.628288
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.537635
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 39.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108992085797326582, guid: b7482393dd6e1b64fb5451c42e049c21,
+        type: 3}
+      propertyPath: m_Name
+      value: Livre (40)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 275341cef398c344b9a15a1a73146ff3, type: 3}
 --- !u!1 &553414675
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,7 +3221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849423782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.460001, y: 1.03, z: -10}
+  m_LocalPosition: {x: -2.88, y: 1.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3699,7 +3768,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b9c773c76f039f74b9465f78780e19c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -3713,7 +3782,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1030402473}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b9c773c76f039f74b9465f78780e19c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5057,11 +5126,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404135173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.75, y: 1.29, z: 0}
+  m_LocalPosition: {x: -13.33, y: 2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1404135176
 MonoBehaviour:
@@ -5078,9 +5147,9 @@ MonoBehaviour:
   controller: {fileID: 1404135174}
   prefab_particule: {fileID: 448885763271980238, guid: 89988899f0ecab741aa1d49a5c3852cb,
     type: 3}
-  frequency: 1
-  damping: 0.1
-  spring_length: 0.5
+  frequency: 3
+  damping: 0
+  spring_length: 0.05
   particules: []
 --- !u!4 &1412048407 stripped
 Transform:

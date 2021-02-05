@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Using pre-set license
 Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
 OS: 'Windows 10 Pro; OS build 19042.746; Version 2009; 64bit' Language: 'fr' Physical Memory: 16310 MB
@@ -151,3 +152,5 @@ Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2226.
 Total: 1.870400 ms (FindLiveObjects: 0.212800 ms CreateObjectMapping: 0.041800 ms MarkObjects: 1.598200 ms  DeleteObjects: 0.016500 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+=======
+>>>>>>> master

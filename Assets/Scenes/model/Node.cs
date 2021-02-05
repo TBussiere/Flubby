@@ -4,10 +4,7 @@ using System.Collections.Generic;
 
 public class Node
 {
-    // public GameObject sphere;
-
     int identity_idx;
-
     public HashSet<Node> neighboors = new HashSet<Node>();
     
     /*
@@ -19,18 +16,6 @@ public class Node
 
     public Node(int idx)
     {
-        
-        // sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere) as GameObject;
-        // // Destroy(sphere.GetComponent(typeof(SphereCollider)));
-        // // Instantiate( );
-        // CircleCollider2D collider = sphere.AddComponent(typeof(CircleCollider2D)) as CircleCollider2D;
-        // collider.radius = radius;
-
-        // //https://www.reddit.com/r/Unity2D/comments/ki7a7b/friction_not_working_on_circle_collider_2d/
-        // Rigidbody2D rigidbody = sphere.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
-        // rigidbody.mass = mass;
-        // rigidbody.drag = drag;
-        // rigidbody.angularDrag = angularDrag;
         identity_idx = idx;
     }
 

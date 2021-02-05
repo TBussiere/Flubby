@@ -11,7 +11,7 @@ public class BlobController : MonoBehaviour
     void Start()
     {
         // model = new Graph();
-        view = new BlobView();
+        // view = new BlobView();
                 
     }
 
