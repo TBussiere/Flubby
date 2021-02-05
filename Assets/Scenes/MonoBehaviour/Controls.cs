@@ -31,12 +31,14 @@ public class Controls : MonoBehaviour
         float time_elapsed = Mathf.Min(Time.time - when_clicked, delta_t);
         coef = coef_max - (coef_max - coef_min) * (time_elapsed / delta_t);
         Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 direction = mouse_pos - this.transform.position;
+        Vector3 drag_vector = mouse_pos - this.transform.position;
+        float drag_magnitude = drag_vector.magnitude;
+        Vector3 drag_direction = drag_vector.normalized;
+        // float magnitude = Mathf.Min(direction.magnitude, max_drag_distance);
+        float magnitude = Mathf.Min(drag_magnitude, fmax);
 
-        float magnitude = Mathf.Min(direction.magnitude, max_size);
-
-        rb2D.AddForce(coef * magnitude * direction.normalized, ForceMode2D.Impulse);
-        Debug.Log(this.gameObject.name);
+        rb2D.AddForce(magnitude * drag_direction, ForceMode2D.Impulse);
+        // Debug.Log(this.gameObject.name);
     }
 
     #if false

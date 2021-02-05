@@ -907,7 +907,7 @@ Transform:
   m_Children:
   - {fileID: 1030402478}
   - {fileID: 2035784760}
-  - {fileID: 550372126}
+  - {fileID: 535418490}
   - {fileID: 499062093}
   - {fileID: 144077751}
   - {fileID: 2003894251}
@@ -2043,20 +2043,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7482393dd6e1b64fb5451c42e049c21, type: 3}
---- !u!4 &535418490 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5071170867046655476, guid: f80e87536cf3fe045869b1ffe5b53372,
-    type: 3}
-  m_PrefabInstance: {fileID: 5071170867580249834}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478568328}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.773319, y: 0.77460533, z: -5.681787}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &499062092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2137,6 +2123,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 499062092}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &535418490 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5071170867046655476, guid: f80e87536cf3fe045869b1ffe5b53372,
+    type: 3}
+  m_PrefabInstance: {fileID: 5071170867580249834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &549250682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2206,12 +2198,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 275341cef398c344b9a15a1a73146ff3, type: 3}
---- !u!4 &549250683
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &553414675
 GameObject:
   m_ObjectHideFlags: 0
@@ -3123,6 +3109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088f965da119b574b94beb36a648ebda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blob: {fileID: 1404135173}
 --- !u!4 &850510031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
@@ -3646,7 +3633,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b9c773c76f039f74b9465f78780e19c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -3660,7 +3647,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1030402473}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b9c773c76f039f74b9465f78780e19c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4803,11 +4790,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404135173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -13.33, y: 2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1404135176
 MonoBehaviour:
@@ -4824,9 +4811,9 @@ MonoBehaviour:
   controller: {fileID: 1404135174}
   prefab_particule: {fileID: 448885763271980238, guid: 89988899f0ecab741aa1d49a5c3852cb,
     type: 3}
-  frequency: 1
-  damping: 0.1
-  spring_length: 0.5
+  frequency: 3
+  damping: 0
+  spring_length: 0.05
   particules: []
 --- !u!4 &1412048407 stripped
 Transform:
@@ -4921,22 +4908,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 711718970}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1469997245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 549250683}
-  m_Layer: 0
-  m_Name: Livre (40) (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &1472355488 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
@@ -5339,7 +5310,6 @@ Transform:
   - {fileID: 1476750480}
   - {fileID: 1965428386}
   - {fileID: 223805362}
-  - {fileID: 549250683}
   m_Father: {fileID: 1778093599}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -19,11 +19,11 @@ public class BlobView : MonoBehaviour
 
     // fréquence des noeuds
     public float frequency = 1;
-
     // damping ratio
     public float damping = 0.1f;
-
     public float spring_length = 0.5f;
+    // public float radius = 0.5f;
+    // public float collider_radius = 0.5f;
 
     public List<GameObject> particules = new List<GameObject>();
     // public List<List<SpringJoint2D>> springs_of_spheres = new List<List<SpringJoint2D>>();
@@ -45,7 +45,9 @@ public class BlobView : MonoBehaviour
         Graph model = controller.model;
         for (int i = 0; i < model.Count(); i++)
         {
-            GameObject particule = Instantiate(prefab_particule, controller.transform);
+            KeyValuePair<int, int> pos = model.inverse_index(i);
+            Vector3 position = new Vector3(pos.Key * spring_length, pos.Value * spring_length, 0) + controller.transform.position;
+            GameObject particule = create_particle(position);
             particules.Add(particule);
 
             // init des accesseurs
@@ -73,6 +75,15 @@ public class BlobView : MonoBehaviour
     void Update()
     {
 
+    }
+
+    GameObject create_particle(Vector3 position)
+    {
+        GameObject particule = Instantiate(prefab_particule, position, Quaternion.identity, controller.transform);
+        // CircleCollider2D collider = particule.GetComponent(typeof(CircleCollider2D)) as CircleCollider2D;
+        // collider.radius = collider_radius;
+        // particule.transform.localScale = new Vector2(radius, radius);
+        return particule;
     }
 
     SpringJoint2D create_spring(Node left, Node right)

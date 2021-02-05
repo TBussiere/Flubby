@@ -5,12 +5,11 @@ using UnityEngine;
 public class Graph
 {
     List<Node> nodes = new List<Node>();
-
+    int length = 10;
+    int idx = 0;
     public Graph()
     {
         // Pour l'instant, on crée une grille
-        int length = 4;
-        int idx = 0;
         for (int i = 0; i < length; i++)
             for (int j = 0; j < length; j++)
             {
@@ -29,7 +28,7 @@ public class Graph
                     {
                         if (ip == 0 && jp == 0)
                             continue;
-                            
+
                         int row = i + ip;
                         int col = j + jp;
 
@@ -54,9 +53,16 @@ public class Graph
         return nodes[idx];
     }
 
-    int index(int row, int col, int length)
+    public int index(int row, int col, int length)
     {
         return row * length + col;
+    }
+
+    // ATTENTION 
+    // ne fonctionne que si systeme de grille, voir pour autre
+    public KeyValuePair<int, int> inverse_index(int x)
+    {
+        return new KeyValuePair<int, int>(x / length, x % length);
     }
 
 

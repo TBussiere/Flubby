@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraMouvement : MonoBehaviour
 {
-    private GameObject blob;
+    public GameObject blob;
 
     // Start is called before the first frame update
     void Start()
     {
-        blob = GameObject.Find("Blob");
+        // blob = GameObject.Find("Blob");
     }
 
     // Update is called once per frame
