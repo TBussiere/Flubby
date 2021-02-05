@@ -274,8 +274,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1808529140}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &63594642
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +320,6 @@ Transform:
   m_Father: {fileID: 478568329}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> fix blobl
 --- !u!4 &73046885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
@@ -733,11 +730,7 @@ Transform:
   - {fileID: 989105110}
   - {fileID: 140178859}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 3
-=======
   m_RootOrder: 5
->>>>>>> fix blobl
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &239516162
 PrefabInstance:
@@ -1208,11 +1201,7 @@ Transform:
   m_LocalScale: {x: 21, y: 1.4296867, z: 0.51}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 1
-=======
   m_RootOrder: 3
->>>>>>> fix blobl
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &343264264
 Rigidbody2D:
@@ -1645,11 +1634,7 @@ Transform:
   m_LocalScale: {x: 21, y: 1.4296867, z: 0.51}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 2
-=======
   m_RootOrder: 4
->>>>>>> fix blobl
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &414697890 stripped
 Transform:
@@ -1926,11 +1911,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.773319, y: 0.77460533, z: -5.681787}
   m_LocalScale: {x: 1, y: 1, z: 1}
-<<<<<<< HEAD
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-=======
   m_Children:
   - {fileID: 1759506061}
   - {fileID: 1699346876}
@@ -1960,7 +1940,6 @@ Transform:
   - {fileID: 1438469774}
   m_Father: {fileID: 0}
   m_RootOrder: 7
->>>>>>> fix blobl
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &549250682
 PrefabInstance:
@@ -2030,10 +2009,6 @@ PrefabInstance:
       value: Livre (40)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-<<<<<<< HEAD
-  m_SourcePrefab: {fileID: 100100000, guid: b7482393dd6e1b64fb5451c42e049c21, type: 3}
---- !u!4 &550372126 stripped
-=======
   m_SourcePrefab: {fileID: 100100000, guid: 275341cef398c344b9a15a1a73146ff3, type: 3}
 --- !u!1 &535418489
 GameObject:
@@ -2052,7 +2027,6 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &535418490
->>>>>>> fix blobl
 Transform:
   m_CorrespondingSourceObject: {fileID: 5071170867046655476, guid: f80e87536cf3fe045869b1ffe5b53372,
     type: 3}
@@ -2364,8 +2338,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7482393dd6e1b64fb5451c42e049c21, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &694224909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,7 +2452,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 275341cef398c344b9a15a1a73146ff3, type: 3}
->>>>>>> fix blobl
 --- !u!4 &697145265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
@@ -2967,11 +2938,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 0
-=======
   m_RootOrder: 2
->>>>>>> fix blobl
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &849423786
 MonoBehaviour:
@@ -4430,11 +4397,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 6
-=======
   m_RootOrder: 8
->>>>>>> fix blobl
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1404135176
 MonoBehaviour:
@@ -4448,12 +4411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e19e3e238029446bfd2ba886c2e54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  prefab_particule: {fileID: 448885763271980238, guid: dc0731395405d4046a0ddfde5a1158ec,
-=======
   controller: {fileID: 0}
   prefab_particule: {fileID: 448885763271980238, guid: 89988899f0ecab741aa1d49a5c3852cb,
->>>>>>> fix blobl
     type: 3}
   frequency: 1
   damping: 0.1
@@ -5139,8 +5098,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 262263218}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!50 &1699346871
 Rigidbody2D:
   serializedVersion: 4
@@ -5178,7 +5135,6 @@ Transform:
   m_Father: {fileID: 478568329}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> fix blobl
 --- !u!1001 &1727920999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5360,9 +5316,6 @@ Transform:
   - {fileID: 2029292183}
   - {fileID: 1392699244}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 4
-=======
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1782580731
@@ -5424,7 +5377,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 478568329}
   m_RootOrder: 15
->>>>>>> fix blobl
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1808529140
 PrefabInstance:
@@ -5576,8 +5528,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7482393dd6e1b64fb5451c42e049c21, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!4 &1928875558
 Transform:
   m_ObjectHideFlags: 0
@@ -5645,7 +5595,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> fix blobl
 --- !u!4 &1963766065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
