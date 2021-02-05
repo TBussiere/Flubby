@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,5 +19,11 @@ public class BlobController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    //TODO
+    internal void reSpawnAt(Vector3 currentRespawnLocation)
+    {
+        throw new NotImplementedException();
     }
 }

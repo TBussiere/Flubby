@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraMouvement : MonoBehaviour
 {
-    private GameObject blob;
+    public GameObject blob;
 
     // Start is called before the first frame update
     void Start()
     {
-        blob = GameObject.Find("Blob");
+        //blob = GameObject.Find("Blob");
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class CameraMouvement : MonoBehaviour
         }
         mean_children_position /= blob.transform.childCount;
 
-        this.gameObject.transform.position = mean_children_position;
+        this.gameObject.transform.position = mean_children_position + new Vector3(5,10,0);
         this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, -10) ;
     }
 }

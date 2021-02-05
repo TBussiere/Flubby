@@ -29,7 +29,7 @@ public class Controls : MonoBehaviour
         float magnitude = Mathf.Min(direction.magnitude, max_size);
 
         rb2D.AddForce(coef * magnitude * direction.normalized, ForceMode2D.Impulse);
-        Debug.Log(this.gameObject.name);
+        //Debug.Log(this.gameObject.name);
     }
 
     #if true
