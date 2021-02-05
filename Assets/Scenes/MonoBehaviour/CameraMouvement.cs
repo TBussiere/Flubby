@@ -9,7 +9,7 @@ public class CameraMouvement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        blob = GameObject.Find("BlobController");
+        blob = GameObject.Find("Blob");
     }
 
     // Update is called once per frame

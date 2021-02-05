@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7444293202061186025}
   - component: {fileID: 7117089973841581526}
   - component: {fileID: 7335943468977735386}
-  - component: {fileID: 1498055541126273576}
   - component: {fileID: 763505242886495520}
   m_Layer: 0
   m_Name: blobParticle
@@ -124,26 +123,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!231 &1498055541126273576
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448885763271980238}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 1
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.8919098, y: 0.01213482}
-  m_AutoConfigureDistance: 0
-  m_Distance: 0.4
-  m_DampingRatio: 0
-  m_Frequency: 1
 --- !u!114 &763505242886495520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 448885763271980238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c03076867a4e13a458b457e6fa6cd9af, type: 3}
+  m_Script: {fileID: 11500000, guid: b7116163dfdc3e046814b90e96dfb547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   max_size: 3

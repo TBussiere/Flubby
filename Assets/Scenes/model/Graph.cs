@@ -27,6 +27,9 @@ public class Graph
                 for (int ip = -1; ip < 2; ip++)
                     for (int jp = -1; jp < 2; jp++)
                     {
+                        if (ip == 0 && jp == 0)
+                            continue;
+                            
                         int row = i + ip;
                         int col = j + jp;
 

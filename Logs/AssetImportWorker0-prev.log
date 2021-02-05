@@ -1,6 +1,14 @@
 Using pre-set license
 Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
+<<<<<<< HEAD
 OS: 'Windows 10 Pro; OS build 19042.746; Version 2009; 64bit' Language: 'fr' Physical Memory: 16310 MB
+=======
+<<<<<<< HEAD
+OS: 'Windows 10 Pro; OS build 19042.746; Version 2009; 64bit' Language: 'fr' Physical Memory: 16310 MB
+=======
+OS: 'Windows 10 Education; OS build 18363.1316; Version 1909; 64bit' Language: 'fr' Physical Memory: 12243 MB
+>>>>>>> fix blobl
+>>>>>>> master
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -11,6 +19,10 @@ C:\Program Files\Unity\Hub\Editor\2020.2.2f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 F:/Users/Thibault Bussiere/Flubby
 -logFile
 Logs/AssetImportWorker0.log
@@ -30,11 +42,39 @@ Direct3D:
     Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c82)
     Vendor:   
     VRAM:     4018 MB
+<<<<<<< HEAD
+=======
+=======
+D:/master/m2/flubby2/flubby
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+61411
+Successfully changed project path to: D:/master/m2/flubby2/flubby
+D:/master/m2/flubby2/flubby
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 50.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.2f1 (068178b99f32)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/master/m2/flubby2/flubby/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
+    Vendor:   
+    VRAM:     6052 MB
+>>>>>>> fix blobl
+>>>>>>> master
     Driver:   27.21.14.5671
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56664
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
@@ -42,11 +82,27 @@ Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/E
 Registered in 0.002161 seconds.
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 34.61 ms, found 1 plugins.
+<<<<<<< HEAD
+=======
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56228
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003575 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 49.19 ms, found 1 plugins.
+>>>>>>> fix blobl
+>>>>>>> master
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 - Completed reload, in  1.034 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
@@ -54,11 +110,27 @@ Registered in 0.000891 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 35.10 ms, found 1 plugins.
+<<<<<<< HEAD
+=======
+=======
+- Completed reload, in  1.684 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000963 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 195.86 ms, found 1 plugins.
+>>>>>>> fix blobl
+>>>>>>> master
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 - Completed reload, in  0.875 seconds
 Platform modules already initialized, skipping
 ========================================================================
@@ -135,19 +207,61 @@ Received Import Request.
   artifactKey: Guid(c03076867a4e13a458b457e6fa6cd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scenes/MonoBehaviour/Controls.cs using Guid(c03076867a4e13a458b457e6fa6cd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e70dcb50d15f884fd8e644e17de85de') in 0.006936 seconds
   Import took 0.009714 seconds .
+<<<<<<< HEAD
+=======
+=======
+- Completed reload, in  5.652 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1775 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 83.9 MB.
+System memory in use after: 84.0 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2222.
+Total: 2.868300 ms (FindLiveObjects: 0.268700 ms CreateObjectMapping: 0.144700 ms MarkObjects: 2.352400 ms  DeleteObjects: 0.100400 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/views/BlobView.cs
+  artifactKey: Guid(82b8d85507d48bd4694ff5dcf91e345f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/views/BlobView.cs using Guid(82b8d85507d48bd4694ff5dcf91e345f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dea7287365debf736538dabdaace2d78') in 0.127670 seconds
+  Import took 0.131082 seconds .
+>>>>>>> fix blobl
+>>>>>>> master
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 Registered in 0.000882 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+<<<<<<< HEAD
+=======
+=======
+Registered in 0.000997 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+>>>>>>> fix blobl
+>>>>>>> master
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 - Completed reload, in  0.778 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
@@ -158,19 +272,59 @@ System memory in use after: 86.7 MB.
 
 Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2231.
 Total: 2.007800 ms (FindLiveObjects: 0.293500 ms CreateObjectMapping: 0.045300 ms MarkObjects: 1.651700 ms  DeleteObjects: 0.016300 ms)
+<<<<<<< HEAD
+=======
+=======
+- Completed reload, in  1.061 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.50 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1765 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 83.6 MB.
+System memory in use after: 83.7 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2225.
+Total: 2.525100 ms (FindLiveObjects: 0.263500 ms CreateObjectMapping: 0.165100 ms MarkObjects: 2.068500 ms  DeleteObjects: 0.025500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 273.779250 seconds.
+  path: Assets/Scenes/controllers/BlobController.cs
+  artifactKey: Guid(5705d8539fe11f04580e788dfd1b69df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/controllers/BlobController.cs using Guid(5705d8539fe11f04580e788dfd1b69df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c349ae6c40f6ac8e8deab2ca06575b0b') in 0.015368 seconds
+  Import took 0.019096 seconds .
+>>>>>>> fix blobl
+>>>>>>> master
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 Registered in 0.001543 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+<<<<<<< HEAD
+=======
+=======
+Registered in 0.000944 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
+>>>>>>> fix blobl
+>>>>>>> master
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 - Completed reload, in  0.787 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
@@ -181,19 +335,59 @@ System memory in use after: 86.9 MB.
 
 Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2233.
 Total: 1.851400 ms (FindLiveObjects: 0.214900 ms CreateObjectMapping: 0.040500 ms MarkObjects: 1.580000 ms  DeleteObjects: 0.014800 ms)
+<<<<<<< HEAD
+=======
+=======
+- Completed reload, in  1.061 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1765 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 83.7 MB.
+System memory in use after: 83.8 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2228.
+Total: 2.421000 ms (FindLiveObjects: 0.315100 ms CreateObjectMapping: 0.149100 ms MarkObjects: 1.935200 ms  DeleteObjects: 0.020100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 153.638973 seconds.
+  path: Assets/Prefab/blobParticle.prefab
+  artifactKey: Guid(89988899f0ecab741aa1d49a5c3852cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/blobParticle.prefab using Guid(89988899f0ecab741aa1d49a5c3852cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bddb4ad848049b1e954db4d919818b49') in 0.121081 seconds
+  Import took 0.127312 seconds .
+>>>>>>> fix blobl
+>>>>>>> master
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 Registered in 0.000860 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+<<<<<<< HEAD
+=======
+=======
+Registered in 0.001448 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+>>>>>>> fix blobl
+>>>>>>> master
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 - Completed reload, in  0.781 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
@@ -204,4 +398,27 @@ System memory in use after: 87.0 MB.
 
 Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2235.
 Total: 1.858100 ms (FindLiveObjects: 0.237700 ms CreateObjectMapping: 0.041800 ms MarkObjects: 1.562300 ms  DeleteObjects: 0.015100 ms)
+<<<<<<< HEAD
+=======
+=======
+- Completed reload, in  1.361 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1765 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.9 MB.
+System memory in use after: 87.1 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2238.
+Total: 3.052000 ms (FindLiveObjects: 0.311500 ms CreateObjectMapping: 0.243200 ms MarkObjects: 2.472600 ms  DeleteObjects: 0.022000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 170.406163 seconds.
+  path: Assets/Scenes/MonoBehaviour/Controls.cs
+  artifactKey: Guid(b7116163dfdc3e046814b90e96dfb547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MonoBehaviour/Controls.cs using Guid(b7116163dfdc3e046814b90e96dfb547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '427b8afdc5f08fdd787bb053f49894e0') in 0.014236 seconds
+  Import took 0.019598 seconds .
+>>>>>>> fix blobl
+>>>>>>> master
 

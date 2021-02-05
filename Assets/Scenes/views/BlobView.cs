@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BlobView : MonoBehaviour
 {
-    public Graph model = new Graph();
+    
+    public BlobController controller;
+
     public GameObject prefab_particule;
     // nombre de particule
     // public int nb_particule = 40;
@@ -31,20 +33,19 @@ public class BlobView : MonoBehaviour
     // on ne garde que des indices, pas des references
     // node => GameObject Sphere / Particules
     // indice node dans model => indice Particule dans `particules`
-    public Dictionary<int,int> nodeToParticule = new Dictionary<int, int>();
+    public Dictionary<int, int> nodeToParticule = new Dictionary<int, int>();
     // GameObject Sphere / Particules => node
     // InstanceID GameObject Particule => indice node dans model
     public Dictionary<int, int> ParticuleToNode = new Dictionary<int, int>();
 
-    
 
     void Start()
     {
-        // model = GetComponentInParent<Graph>(); 
-
+        
+        Graph model = controller.model;
         for (int i = 0; i < model.Count(); i++)
         {
-            GameObject particule = Instantiate(prefab_particule, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject particule = Instantiate(prefab_particule, controller.transform);
             particules.Add(particule);
 
             // init des accesseurs
@@ -52,7 +53,7 @@ public class BlobView : MonoBehaviour
             ParticuleToNode.Add(particule.GetInstanceID(), i);
         }
 
-        for(int i = 0; i < model.Count(); i++)
+        for (int i = 0; i < model.Count(); i++)
         {
             Node n = model.GetNode(i);
             foreach (Node neighboor in n.neighboors)
@@ -67,7 +68,6 @@ public class BlobView : MonoBehaviour
                 create_spring(n, neighboor);
             }
         }
-
     }
 
     void Update()
@@ -87,6 +87,7 @@ public class BlobView : MonoBehaviour
         spring.distance = spring_length;
         spring.dampingRatio = damping;
         spring.frequency = frequency;
+        spring.autoConfigureDistance = false;
         spring.connectedBody = right_particule.GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
         return spring;
     }
