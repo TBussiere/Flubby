@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlobController : MonoBehaviour
 {
-    
+    public Graph model = new Graph();
     public BlobView view;
     // Start is called before the first frame update
     void Start()

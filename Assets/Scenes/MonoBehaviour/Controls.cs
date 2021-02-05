@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
-    public float max_size;
-    public float coef;
+    public float max_size = 5;
+    public float coef = 0.09f;
     private Rigidbody2D rb2D;
 
     void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
-        max_size = 5;
-        coef = 0.09f;
+        
     }
 
     void OnMouseDown()

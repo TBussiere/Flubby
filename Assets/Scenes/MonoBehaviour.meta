@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 8ea05855c795fad4b86da00a2daf484c
+=======
+guid: c6f1c7e135bd82b46988d74b5cd6ecdc
+>>>>>>> fix blobl
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
