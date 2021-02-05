@@ -39,14 +39,13 @@ public class BlobView : MonoBehaviour
     public Dictionary<int, int> ParticuleToNode = new Dictionary<int, int>();
 
 
-
     void Start()
     {
         
         Graph model = controller.model;
         for (int i = 0; i < model.Count(); i++)
         {
-            GameObject particule = Instantiate(prefab_particule, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject particule = Instantiate(prefab_particule, controller.transform);
             particules.Add(particule);
 
             // init des accesseurs
