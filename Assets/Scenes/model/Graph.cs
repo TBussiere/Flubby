@@ -5,7 +5,7 @@ using UnityEngine;
 public class Graph
 {
     List<Node> nodes = new List<Node>();
-    int length = 10;
+    int length = 15;
     int idx = 0;
     public Graph()
     {
@@ -40,9 +40,11 @@ public class Graph
                             continue;
 
                         current_node.create_edge(other);
+                        other.create_edge(current_node);
                     }
             }
     }
+    
     public int Count()
     {
         return nodes.Count;
