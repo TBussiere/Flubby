@@ -35,7 +35,7 @@ public class Node
 
     public void delete_edge(Node other)
     {
-        other.delete_edge(this);
+        other.neighboors.Remove(this);
         neighboors.Remove(other);
     }
 

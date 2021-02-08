@@ -72,12 +72,6 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< HEAD
-		{FB00B4EB-4122-838D-CCBD-CEF21D8402A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB00B4EB-4122-838D-CCBD-CEF21D8402A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB00B4EB-4122-838D-CCBD-CEF21D8402A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB00B4EB-4122-838D-CCBD-CEF21D8402A5}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{c0977c80-590a-8d5a-1eed-d56920132771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{c0977c80-590a-8d5a-1eed-d56920132771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8c9aabd9-1c07-e242-96b2-7381cbe313aa}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -144,7 +138,6 @@ Global
 		{b3c8a7ed-0ad4-c2e7-d90e-d9cd161e68ac}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0202cc98-0535-8715-40d1-3bf696d27f1b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0202cc98-0535-8715-40d1-3bf696d27f1b}.Debug|Any CPU.Build.0 = Debug|Any CPU
->>>>>>> tweaking parameters of the blob + few fix
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
