@@ -24,6 +24,7 @@ public class Controls : MonoBehaviour
         when_clicked = Time.time;
         max_size = 5;
         coef = coef_max;
+        Debug.Log(this.gameObject.name);
     }
 
     void OnMouseDrag()
@@ -46,7 +47,16 @@ public class Controls : MonoBehaviour
         // float magnitude = Mathf.Min(drag_magnitude, fmax);
 
         // rb2D.AddForce(magnitude * drag_direction, ForceMode2D.Impulse);
-        // Debug.Log(this.gameObject.name);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject blob = this.transform.parent.gameObject;
+            BlobView bv = blob.GetComponent<BlobView>();
+            bv.try_link(this.gameObject, collision.gameObject);
+        }
     }
 
     #if false

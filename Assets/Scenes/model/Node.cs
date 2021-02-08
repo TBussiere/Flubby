@@ -21,8 +21,7 @@ public class Node
 
     public bool isAlreadyConnectedTo(Node node)
     {
-
-        if (neighboors.Contains(node))
+        if (this.neighboors.Contains(node) || node.neighboors.Contains(this))
             return true;
 
         return false;
@@ -30,13 +29,14 @@ public class Node
 
     public void create_edge(Node other)
     {
-        neighboors.Add(other);
+        this.neighboors.Add(other);
+        other.neighboors.Add(this);
     }
 
     public void delete_edge(Node other)
     {
         other.neighboors.Remove(this);
-        neighboors.Remove(other);
+        this.neighboors.Remove(other);
     }
 
     // override object.Equals

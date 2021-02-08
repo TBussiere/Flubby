@@ -5072,15 +5072,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1404135173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b8d85507d48bd4694ff5dcf91e345f, type: 3}
+  m_Script: {fileID: 11500000, guid: 47a4912149bd64541862b7e924a3c71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1404135174}
   prefab_particule: {fileID: 448885763271980238, guid: 89988899f0ecab741aa1d49a5c3852cb,
     type: 3}
-  frequency: 3
-  damping: 0
-  spring_length: 0.05
+  frequency: 1
+  damping: 0.1
+  spring_length: 0.4
+  max_distance_joint: 1
   particules: []
 --- !u!4 &1412048407 stripped
 Transform:

@@ -83,9 +83,7 @@ public class BlobView : MonoBehaviour
     void Update()
     {
         // Suppression de liaisons
-        // 1) Faire une fonction de suppresion d'un spring
-        // 2) Liste des voisins ayant plus de n liaisons
-        // 3) Distance max dans cette sous-sélection
+        break_particles_links(0.3f, 6);
 
 
         // Creation de liaisons
@@ -95,7 +93,6 @@ public class BlobView : MonoBehaviour
     GameObject create_particle(Vector3 position)
     {
         GameObject particule = Instantiate(prefab_particule, position, Quaternion.identity, controller.transform);
-        particule.tag = "BlobParticule";
         // CircleCollider2D collider = particule.GetComponent(typeof(CircleCollider2D)) as CircleCollider2D;
         // collider.radius = collider_radius;
         // particule.transform.localScale = new Vector2(radius, radius);
@@ -133,12 +130,12 @@ public class BlobView : MonoBehaviour
         GameObject right_particule = particules[idx_right_particule];
 
         // Cherche si le ressort est de gauche à droite.
-        Component[] springs_left_to_right;
-        springs_left_to_right = left_particule.GetComponents(typeof(HingeJoint));
+        List<Component> springs_left_to_right = new List<Component>(); ;
+        left_particule.GetComponents(typeof(SpringJoint2D), springs_left_to_right);
 
         foreach (SpringJoint2D joint in springs_left_to_right)
         {
-            if (joint.attachedRigidbody.gameObject == right_particule)
+            if (joint.connectedBody.gameObject == right_particule)
             {
                 Destroy(joint);
             }
@@ -146,11 +143,45 @@ public class BlobView : MonoBehaviour
 
         // Cherche si le ressort est de droite à gauche. (on le fait au cas où deux springs aient été mis)
         Component[] springs_right_to_left;
-        springs_right_to_left = right_particule.GetComponents(typeof(HingeJoint));
+        springs_right_to_left = right_particule.GetComponents(typeof(SpringJoint2D));
 
         foreach (SpringJoint2D joint in springs_right_to_left)
         {
-            if (joint.attachedRigidbody.gameObject == left_particule)
+            if (joint.connectedBody.gameObject == left_particule)
+            {
+                Destroy(joint);
+            }
+        }
+    }
+
+    void remove_distance_joint(Node left, Node right)
+    {
+        int idx_left_particule = nodeToParticule[left.getIdentityID()];
+        GameObject left_particule = particules[idx_left_particule];
+        int idx_right_particule = nodeToParticule[right.getIdentityID()];
+        GameObject right_particule = particules[idx_right_particule];
+
+        // Cherche si le ressort est de gauche à droite.
+        Component[] springs_left_to_right;
+        springs_left_to_right = left_particule.GetComponents(typeof(DistanceJoint2D));
+
+        foreach (DistanceJoint2D joint in springs_left_to_right)
+        {
+            if (joint.connectedBody.gameObject == right_particule)
+            {
+
+                Debug.Log("break dist_joint");
+                Destroy(joint);
+            }
+        }
+
+        // Cherche si le ressort est de droite à gauche. (on le fait au cas où deux springs aient été mis)
+        Component[] springs_right_to_left;
+        springs_right_to_left = right_particule.GetComponents(typeof(DistanceJoint2D));
+
+        foreach (DistanceJoint2D joint in springs_right_to_left)
+        {
+            if (joint.connectedBody.gameObject == left_particule)
             {
                 Destroy(joint);
             }
@@ -178,26 +209,54 @@ public class BlobView : MonoBehaviour
         Graph model = controller.model;
 
         // NON ! -> tester à chaque fois ...
-        foreach (Node node_ in model.GetNodesWithMinNeighbors(n))
+        foreach (Node node_ in model.GetNodes())
         {
-            float max_dist = 0;
-            Node further_node = null;
-
-            foreach (Node neighboor_ in model.GetBreakableNeighboors(node_, n))
+            if (node_.Count() > n)
             {
-                float dist = distance(node_, neighboor_);
-                if (dist > max_dist)
+                float max_dist = 0;
+                Node further_node = null;
+
+                foreach (Node neighboor_ in model.GetBreakableNeighboors(node_, n))
                 {
-                    max_dist = dist;
-                    further_node = neighboor_;
+                    float dist = distance(node_, neighboor_);
+                    if (dist > max_dist)
+                    {
+                        max_dist = dist;
+                        further_node = neighboor_;
+                    }
+                }
+
+                if (further_node != null)
+                {
+                    node_.delete_edge(further_node);
+                    remove_spring(node_, further_node);
+                    remove_distance_joint(node_, further_node);
                 }
             }
-
-            if (further_node != null)
-            {
-                // model.remove_link();
-                remove_spring(node_, further_node);
-            }
         }
+    }
+
+    public void try_link(GameObject particle1, GameObject particle2)
+    {
+        Graph model = controller.model;
+
+        // On retrouve les nodes
+        Object p1 = particle1;
+        Object p2 = particle2;
+        int id1 = p1.GetInstanceID();
+        Node node1 = model.GetNode(ParticuleToNode[id1]);
+        int id2 = p2.GetInstanceID();
+        Node node2 = model.GetNode(ParticuleToNode[id2]);
+
+        // On regarde s'il exite déjà une arête dans le graphe
+        if (!node1.isAlreadyConnectedTo(node2))
+        {
+            // Si non on en créé une et un spring/distance joint
+            node1.create_edge(node2);
+            create_distance_joint(particle1, particle2);
+            create_spring(particle1, particle2);
+            Debug.Log("NEW !!");
+        }
+
     }
 }
