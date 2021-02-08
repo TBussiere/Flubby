@@ -15,6 +15,7 @@ F:/Cours/ID3D/GAMIF/flubby
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
+<<<<<<< HEAD
 58365
 Successfully changed project path to: F:/Cours/ID3D/GAMIF/flubby
 F:/Cours/ID3D/GAMIF/flubby
@@ -249,3 +250,8 @@ System memory in use after: 84.9 MB.
 Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2246.
 Total: 2.006200 ms (FindLiveObjects: 0.184400 ms CreateObjectMapping: 0.062600 ms MarkObjects: 1.742100 ms  DeleteObjects: 0.016200 ms)
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+=======
+53352
+Successfully changed project path to: D:/master/m2/flubby2/flubby
+>>>>>>> master

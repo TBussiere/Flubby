@@ -25,5 +25,6 @@ public class BlobController : MonoBehaviour
     internal void reSpawnAt(Vector3 currentRespawnLocation)
     {
         throw new NotImplementedException();
+        
     }
 }
