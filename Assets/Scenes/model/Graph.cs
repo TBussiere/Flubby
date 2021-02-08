@@ -5,7 +5,7 @@ using UnityEngine;
 public class Graph
 {
     List<Node> nodes = new List<Node>();
-    int length = 10;
+    int length = 6;
     int idx = 0;
     public Graph()
     {
@@ -53,6 +53,11 @@ public class Graph
         return nodes[idx];
     }
 
+    public List<Node> GetNodes()
+    {
+        return nodes;
+    }
+
     public int index(int row, int col, int length)
     {
         return row * length + col;
@@ -65,5 +70,63 @@ public class Graph
         return new KeyValuePair<int, int>(x / length, x % length);
     }
 
+    public List<Node> GetNodesWithMinNeighbors(int n)
+    {
+        List<Node> eligibles = new List<Node>();
+        foreach (Node node_ in nodes)
+        {
+            if (node_.Count() >= n)
+            {
+                eligibles.Add(node_);
+            }
+        }
 
+        return eligibles;
+    }
+
+    public List<Node> GetBreakableNeighboors(Node node_, int n)
+    {
+        HashSet<Node> neighboors = node_.GetNeighboors();
+        List<Node> breakable = new List<Node>();
+            
+        foreach (Node neighboor_ in neighboors)
+        {
+            if (neighboor_.Count() >= n)
+            {
+                breakable.Add(neighboor_);
+            }
+        }
+
+        return breakable;
+    }
+
+    /*
+    public List<Node> GetBreakableNeighboors(Node node_, int n)
+    {
+        List<Node> eligibles = GetNodesWithMinNeighbors(n);
+        List<Node> breakable = new List<Node>();
+
+        foreach (Node node_ in eligibles)
+        {
+            HashSet<Node> neighboors = node_.GetNeighboors();
+            bool has_breakable_link = false;
+            
+            foreach (Node neighboor_ in neighboors)
+            {
+                if (neighboor_.Count() >= n)
+                {
+                    has_breakable_link = true;
+                    break;
+                }
+            }
+
+            if (has_breakable_link)
+            {
+                breakable.Add(node_);
+            }
+        }
+
+        return breakable;
+    }
+    */
 }

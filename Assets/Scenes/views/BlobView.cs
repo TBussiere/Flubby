@@ -21,7 +21,7 @@ public class BlobView : MonoBehaviour
     public float frequency = 1;
     // damping ratio
     public float damping = 0.1f;
-    public float spring_length = 0.5f;
+    public float spring_length = 0.7f;
     // public float radius = 0.5f;
     // public float collider_radius = 0.5f;
 
@@ -74,12 +74,20 @@ public class BlobView : MonoBehaviour
 
     void Update()
     {
+        // Suppression de liaisons
+        // 1) Faire une fonction de suppresion d'un spring
+        // 2) Liste des voisins ayant plus de n liaisons
+        // 3) Distance max dans cette sous-sélection
 
+
+        // Creation de liaisons
+        // -> Ailleurs ? (dans le contrôlleur de la particule elle-même)
     }
 
     GameObject create_particle(Vector3 position)
     {
         GameObject particule = Instantiate(prefab_particule, position, Quaternion.identity, controller.transform);
+        particule.tag = "BlobParticule";
         // CircleCollider2D collider = particule.GetComponent(typeof(CircleCollider2D)) as CircleCollider2D;
         // collider.radius = collider_radius;
         // particule.transform.localScale = new Vector2(radius, radius);
@@ -95,11 +103,87 @@ public class BlobView : MonoBehaviour
 
         SpringJoint2D spring = left_particule.AddComponent(typeof(SpringJoint2D)) as SpringJoint2D;
         spring.enableCollision = true;
+        spring.autoConfigureDistance = false;
         spring.distance = spring_length;
         spring.dampingRatio = damping;
         spring.frequency = frequency;
-        spring.autoConfigureDistance = false;
         spring.connectedBody = right_particule.GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
         return spring;
+    }
+
+    void remove_spring(Node left, Node right)
+    {
+        int idx_left_particule = nodeToParticule[left.getIdentityID()];
+        GameObject left_particule = particules[idx_left_particule];
+        int idx_right_particule = nodeToParticule[right.getIdentityID()];
+        GameObject right_particule = particules[idx_right_particule];
+
+        // Cherche si le ressort est de gauche à droite.
+        Component[] springs_left_to_right;
+        springs_left_to_right = left_particule.GetComponents(typeof(HingeJoint));
+
+        foreach (SpringJoint2D joint in springs_left_to_right)
+        {
+            if (joint.attachedRigidbody.gameObject == right_particule)
+            {
+                Destroy(joint);
+            }
+        }
+
+        // Cherche si le ressort est de droite à gauche. (on le fait au cas où deux springs aient été mis)
+        Component[] springs_right_to_left;
+        springs_right_to_left = right_particule.GetComponents(typeof(HingeJoint));
+
+        foreach (SpringJoint2D joint in springs_right_to_left)
+        {
+            if (joint.attachedRigidbody.gameObject == left_particule)
+            {
+                Destroy(joint);
+            }
+        }
+    }
+
+    float distance(Node left, Node right)
+    {
+        int idx_left_particule = nodeToParticule[left.getIdentityID()];
+        GameObject left_particule = particules[idx_left_particule];
+        int idx_right_particule = nodeToParticule[right.getIdentityID()];
+        GameObject right_particule = particules[idx_right_particule];
+
+        Vector2 l2 = left_particule.transform.position;
+        Vector2 r2 = right_particule.transform.position;
+        return (l2 - r2).magnitude;
+    }
+
+    /**
+     * break_distance : min distance to break a link between two particles
+     * n : min amount of neighboors to kill a link
+     */
+    void break_particles_links(float break_distance, int n)
+    {
+        Graph model = controller.model;
+
+        // NON ! -> tester à chaque fois ...
+        foreach (Node node_ in model.GetNodesWithMinNeighbors(n))
+        {
+            float max_dist = 0;
+            Node further_node = null;
+
+            foreach (Node neighboor_ in model.GetBreakableNeighboors(node_, n))
+            {
+                float dist = distance(node_, neighboor_);
+                if (dist > max_dist)
+                {
+                    max_dist = dist;
+                    further_node = neighboor_;
+                }
+            }
+
+            if (further_node != null)
+            {
+                // model.remove_link();
+                remove_spring(node_, further_node);
+            }
+        }
     }
 }

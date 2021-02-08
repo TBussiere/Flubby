@@ -71,4 +71,9 @@ public class Node
     {
         return identity_idx;
     }
+
+    public HashSet<Node> GetNeighboors()
+    {
+        return neighboors;
+    }
 }
