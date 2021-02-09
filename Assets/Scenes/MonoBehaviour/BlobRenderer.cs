@@ -132,10 +132,10 @@ public class BlobRenderer : MonoBehaviour
                     var K = new Vector2(x_travel + square_size * 0.5f, y_travel + square_size);
                     var L = new Vector2(x_travel, y_travel + square_size * 0.5f);
 
-                    int sa = isBlobCollider(A);
-                    int sb = isBlobCollider(B);
-                    int sc = isBlobCollider(C);
-                    int sd = isBlobCollider(D);
+                    int sa = isBlobSI(A);
+                    int sb = isBlobSI(B);
+                    int sc = isBlobSI(C);
+                    int sd = isBlobSI(D);
 
                     int state = GetState(sa, sb, sc, sd);
 
@@ -263,7 +263,7 @@ public class BlobRenderer : MonoBehaviour
 
     float sphere(Vector2 centre, float radius, Vector2 p)
     {
-        return falloff((centre - p).magnitude, radius);
+        return falloff((centre - p).sqrMagnitude, radius*radius);
     }
 
     float SI(Vector2 p)
@@ -278,6 +278,16 @@ public class BlobRenderer : MonoBehaviour
         }
 
         return v;
+    }
+
+    int isBlobSI(Vector2 p)
+    {
+        float si = SI(p);
+
+        if (si >= 0.1)
+            return 1;
+
+        return 0;
     }
 
 }

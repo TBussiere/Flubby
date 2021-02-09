@@ -85,9 +85,10 @@ public class BlobView : MonoBehaviour
         // Suppression de liaisons
         break_particles_links(0.3f, 5);
 
-
-        // Creation de liaisons
-        // -> Ailleurs ? (dans le contrôlleur de la particule elle-même)
+        if (Input.GetKeyDown("k"))
+        {
+            kill_blob();
+        }
     }
 
     GameObject create_particle(Vector3 position)
@@ -255,5 +256,30 @@ public class BlobView : MonoBehaviour
             create_spring(particle1, particle2);
         }
 
+    }
+
+    public void kill_blob()
+    {
+        foreach (GameObject particle_ in particules)
+        {
+            Component[] joints;
+            joints = particle_.GetComponents(typeof(DistanceJoint2D));
+
+            foreach (DistanceJoint2D joint in joints)
+            {
+                Destroy(joint);
+            }
+
+            Component[] springs;
+            springs = particle_.GetComponents(typeof(SpringJoint2D));
+
+            foreach (SpringJoint2D spring in springs)
+            {
+                Destroy(spring);
+            }
+
+            Rigidbody2D rb2D = particle_.GetComponent<Rigidbody2D>();
+            rb2D.AddForce(new Vector2(Random.Range(1,10), Random.Range(1, 10)), ForceMode2D.Impulse);
+        }
     }
 }

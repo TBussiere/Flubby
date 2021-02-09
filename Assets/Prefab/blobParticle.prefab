@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.7
+  m_Mass: 0.65
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 1
@@ -135,9 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7116163dfdc3e046814b90e96dfb547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_size: 3
-  coef_max: 0.5
-  coef_min: 0.2
-  delta_t: 1
+  max_size: 2
+  coef_max: 1.7
+  coef_min: 0.5
+  delta_t: 2
   coef: 0
   lineColor: {r: 1, g: 0, b: 0, a: 1}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Graph
 {
     List<Node> nodes = new List<Node>();
-    int length = 6;
+    int length = 7;
     int idx = 0;
     public Graph()
     {
