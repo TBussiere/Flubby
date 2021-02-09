@@ -38,7 +38,7 @@ public class CheckPointsHandler : MonoBehaviour
     public void CPpass(GameObject cp)
     {
         Destroy(saveScene);
-        CurrentRespawnLocation = cp.transform.position;
+        CurrentRespawnLocation = new Vector3(cp.transform.position.x,transform.position.y,0);
         saveScene = Instantiate(refScene);
         saveScene.SetActive(false);
     }

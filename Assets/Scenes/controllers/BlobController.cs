@@ -30,15 +30,8 @@ public class BlobController : MonoBehaviour
         return pos / view.particules.Count;
     }
 
-    //TODO
     internal void reSpawnAt(Vector3 currentRespawnLocation)
     {
-        this.transform.position = currentRespawnLocation;
-        Destroy(view);
-        model = new Graph();
-        view = new BlobView();
-
-        // throw new NotImplementedException();
-
+        view.particules.ForEach((p) => p.transform.position = currentRespawnLocation);
     }
 }
