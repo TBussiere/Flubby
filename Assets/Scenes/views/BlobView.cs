@@ -83,7 +83,7 @@ public class BlobView : MonoBehaviour
     void Update()
     {
         // Suppression de liaisons
-        break_particles_links(0.3f, 6);
+        break_particles_links(0.3f, 5);
 
 
         // Creation de liaisons

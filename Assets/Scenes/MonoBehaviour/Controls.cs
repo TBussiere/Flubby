@@ -5,8 +5,8 @@ using UnityEngine;
 public class Controls : MonoBehaviour
 {
     public float max_size = 2;
-    public float coef_max = 0.09f;
-    public float coef_min = 0.07f;
+    public float coef_max = 0.5f;
+    public float coef_min = 0.2f;
     public float delta_t = 1;
     public float coef;
     private Rigidbody2D rb2D;

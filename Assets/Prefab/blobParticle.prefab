@@ -41,7 +41,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448885763271980238}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 0.7
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 1
@@ -136,7 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_size: 3
-  coef_max: 0.09
-  coef_min: 0.07
+  coef_max: 0.5
+  coef_min: 0.2
   delta_t: 1
   coef: 0
+  lineColor: {r: 1, g: 0, b: 0, a: 1}

@@ -86,7 +86,7 @@ public class BlobRenderer : MonoBehaviour
         lineMaterial.SetPass(0);
 
         // Show grid
-#if true
+#if false
         GL.Begin(GL.LINES);
         GL.Color(lineColor);
 
@@ -105,92 +105,144 @@ public class BlobRenderer : MonoBehaviour
 #endif
 
         // Marching triangle based on colliders - WIP
-#if false
-        global.Begin(global.TRIANGLES);
-        GL.Color(lineColor);
-
-        for (float x_travel = bottom_left_corner.x; x_travel < top_right_corner.x; x_travel += square_size)
+#if true
+        if (square_size > 0)
         {
-            for (float y_travel = bottom_left_corner.y; y_travel < top_right_corner.y; y_travel += square_size)
+            for (float x_travel = bottom_left_corner.x; x_travel < top_right_corner.x; x_travel += square_size)
             {
-                var a = new Vector2(x_travel + square_size * 0.5f,  y_travel);
-                var b = new Vector2(x_travel + square_size,         y_travel + square_size * 0.5f);
-                var c = new Vector2(x_travel + square_size * 0.5f,  y_travel + square_size);
-                var d = new Vector2(x_travel,                       y_travel + square_size * 0.5f);
-
-                int sa = 0;//Mathf.CeilToInt(field[i, j]);
-                int sb = 0;//Mathf.CeilToInt(field[i + 1, j]);
-                int sc = 0;//Mathf.CeilToInt(field[i + 1, j + 1]);
-                int sd = 1;//Mathf.CeilToInt(field[i, j + 1]);
-
-                int state = GetState(sa, sb, sc, sd);
-
-                switch (state)
+                for (float y_travel = bottom_left_corner.y; y_travel < top_right_corner.y; y_travel += square_size)
                 {
-                    case 1:
-                        Line(c, d);
-                        break;
-                    case 2:
-                        Line(b, c);
-                        break;
-                    case 3:
-                        Line(b, d);
-                        break;
-                    case 4:
-                        Line(a, b);
-                        break;
-                    case 5:
-                        Line(a, d);
-                        Line(b, c);
-                        break;
-                    case 6:
-                        Line(a, c);
-                        break;
-                    case 7:
-                        Line(a, d);
-                        break;
-                    case 8:
-                        Line(a, d);
-                        break;
-                    case 9:
-                        Line(a, c);
-                        break;
-                    case 10:
-                        Line(a, b);
-                        Line(c, d);
-                        break;
-                    case 11:
-                        Line(a, b);
-                        break;
-                    case 12:
-                        Line(b, d);
-                        break;
-                    case 13:
-                        Line(b, c);
-                        break;
-                    case 14:
-                        Line(c, d);
-                        break;
-                    default:
-                        break;
+                    // Square points reference :
+                    //
+                    // D k C
+                    // l . j
+                    // A i B
+
+
+                    // Sommets
+                    var A = new Vector2(x_travel, y_travel);
+                    var B = new Vector2(x_travel + square_size, y_travel);
+                    var C = new Vector2(x_travel + square_size, y_travel + square_size);
+                    var D = new Vector2(x_travel, y_travel + square_size);
+
+                    // Milieu des segments
+                    var I = new Vector2(x_travel + square_size * 0.5f, y_travel);
+                    var J = new Vector2(x_travel + square_size, y_travel + square_size * 0.5f);
+                    var K = new Vector2(x_travel + square_size * 0.5f, y_travel + square_size);
+                    var L = new Vector2(x_travel, y_travel + square_size * 0.5f);
+
+                    int sa = isBlobCollider(A);
+                    int sb = isBlobCollider(B);
+                    int sc = isBlobCollider(C);
+                    int sd = isBlobCollider(D);
+
+                    int state = GetState(sa, sb, sc, sd);
+
+                    switch (state)
+                    {
+                        case 1:
+                            DrawTriangle(K, D, L);
+                            break;
+                        case 2:
+                            DrawTriangle(J, C, K);
+                            break;
+                        case 3:
+                            DrawTriangle(J, D, L);
+                            DrawTriangle(D, J, C);
+                            break;
+                        case 4:
+                            DrawTriangle(I, B, J);
+                            break;
+                        case 5:
+                            DrawTriangle(B, L, I);
+                            DrawTriangle(B, D, L);
+                            DrawTriangle(B, K, D);
+                            DrawTriangle(B, J, K);
+                            break;
+                        case 6:
+                            DrawTriangle(B, C, K);
+                            DrawTriangle(K, I, B);
+                            break;
+                        case 7:
+                            DrawTriangle(C, D, L);
+                            DrawTriangle(C, L, I);
+                            DrawTriangle(C, I, B);
+                            break;
+                        case 8:
+                            DrawTriangle(A, I, L);
+                            break;
+                        case 9:
+                            DrawTriangle(A, K, D);
+                            DrawTriangle(A, I, K);
+                            break;
+                        case 10:
+                            DrawTriangle(A, I, J);
+                            DrawTriangle(A, J, C);
+                            DrawTriangle(A, C, K);
+                            DrawTriangle(A, K, L);
+                            break;
+                        case 11:
+                            DrawTriangle(D, A, I);
+                            DrawTriangle(D, I, J);
+                            DrawTriangle(D, J, C);
+                            break;
+                        case 12:
+                            DrawTriangle(L, A, J);
+                            DrawTriangle(A, B, J);
+                            break;
+                        case 13:
+                            DrawTriangle(A, B, J);
+                            DrawTriangle(A, J, K);
+                            DrawTriangle(A, K, D);
+                            break;
+                        case 14:
+                            DrawTriangle(B, C, K);
+                            DrawTriangle(B, K, L);
+                            DrawTriangle(B, L, A);
+                            break;
+                        case 15:
+                            DrawTriangle(A, B, C);
+                            DrawTriangle(A, C, D);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
-
-        GL.End();
 #endif
 
         GL.PopMatrix();
     }
 
-    void Line(Vector2 a, Vector2 b)
+    void DrawTriangle(Vector2 a, Vector2 b, Vector2 c)
     {
-        Debug.DrawLine(a, b, Color.white);
+        GL.Begin(GL.TRIANGLES);
+        GL.Color(lineColor);
+
+        GL.Vertex3(a.x, a.y, 0);
+        GL.Vertex3(b.x, b.y, 0);
+        GL.Vertex3(c.x, c.y, 0);
+
+        GL.End();
     }
 
     // convert "binary" to int (0 0 0 0 = 0)
     int GetState(int a, int b, int c, int d)
     {
         return a * 8 + b * 4 + c * 2 + d * 1;
+    }
+
+    int isBlobCollider(Vector2 p)
+    {
+        Ray ray = new Ray(new Vector3(p.x, p.y, -10), transform.forward);
+
+        RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+
+        if (hit.collider != null && hit.collider.gameObject.tag == "Player") {
+            return 1;
+        }
+
+        return 0;
     }
 }
