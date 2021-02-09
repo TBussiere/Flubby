@@ -40,9 +40,11 @@ public class Graph
                             continue;
 
                         current_node.create_edge(other);
+                        other.create_edge(current_node);
                     }
             }
     }
+    
     public int Count()
     {
         return nodes.Count;
