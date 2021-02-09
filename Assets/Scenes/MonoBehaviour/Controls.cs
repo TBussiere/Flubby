@@ -52,8 +52,7 @@ public class Controls : MonoBehaviour
 
         //Debug.Log(this.gameObject.name);
     }
-
-    void OnMouseDrag()
+    void drag()
     {
         float time_elapsed = Mathf.Min(Time.time - when_clicked, delta_t);
         coef = coef_max - (coef_max - coef_min) * (time_elapsed / delta_t);
@@ -73,8 +72,19 @@ public class Controls : MonoBehaviour
         // float magnitude = Mathf.Min(drag_magnitude, fmax);
 
         // rb2D.AddForce(magnitude * drag_direction, ForceMode2D.Impulse);
+
     }
 
+    
+    void OnMouseDrag()
+    {
+        drag();
+        foreach(SpringJoint2D spring in GetComponents<SpringJoint2D>())
+        {
+            spring.connectedBody.GetComponentInParent<Controls>().drag();
+        }
+    }
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
