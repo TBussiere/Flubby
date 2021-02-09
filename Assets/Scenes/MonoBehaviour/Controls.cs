@@ -10,7 +10,32 @@ public class Controls : MonoBehaviour
     public float delta_t = 1;
     public float coef;
     private Rigidbody2D rb2D;
-    private float when_clicked = 0;
+    private float when_clicked = 0; 
+    
+    public Color lineColor = Color.red;
+
+    Material lineMaterial;
+
+    void Awake()
+    {
+        // must be called before trying to draw lines..
+        CreateLineMaterial();
+    }
+
+    void CreateLineMaterial()
+    {
+        // Unity has a built-in shader that is useful for drawing simple colored things
+        var shader = Shader.Find("Hidden/Internal-Colored");
+        lineMaterial = new Material(shader);
+        lineMaterial.hideFlags = HideFlags.HideAndDontSave;
+        // Turn on alpha blending
+        lineMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        lineMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        // Turn backface culling off
+        lineMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
+        // Turn off depth writes
+        lineMaterial.SetInt("_ZWrite", 0);
+    }
 
     void Start()
     {
@@ -24,7 +49,8 @@ public class Controls : MonoBehaviour
         when_clicked = Time.time;
         max_size = 5;
         coef = coef_max;
-        Debug.Log(this.gameObject.name);
+
+        //Debug.Log(this.gameObject.name);
     }
 
     void OnMouseDrag()
@@ -62,18 +88,22 @@ public class Controls : MonoBehaviour
     #if false
     void OnRenderObject()
     {
+        lineMaterial.SetPass(0);
+
+        GL.PushMatrix();
+
+
         Vector3 part_pos = this.transform.position;
         Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 direction = mouse_pos - this.transform.position;
-
-        float magnitude = Mathf.Min(direction.magnitude, max_size);
-        mouse_pos = this.transform.position + direction.normalized * magnitude;
 
         GL.Begin(GL.LINES);
         GL.Color(new Color(1f, 1f, 1f, 1f));
-        GL.Vertex3(mouse_pos.x, mouse_pos.y, mouse_pos.z);
-        GL.Vertex3(part_pos.x, part_pos.y, part_pos.z);
+        GL.Vertex3(mouse_pos.x, mouse_pos.y, 0);
+        GL.Vertex3(part_pos.x, part_pos.y, 0);
         GL.End();
+
+
+        GL.PopMatrix();
     }
     #endif
 }

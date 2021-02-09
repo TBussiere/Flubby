@@ -169,8 +169,6 @@ public class BlobView : MonoBehaviour
         {
             if (joint.connectedBody.gameObject == right_particule)
             {
-
-                Debug.Log("break dist_joint");
                 Destroy(joint);
             }
         }
@@ -255,7 +253,6 @@ public class BlobView : MonoBehaviour
             node1.create_edge(node2);
             create_distance_joint(particle1, particle2);
             create_spring(particle1, particle2);
-            Debug.Log("NEW !!");
         }
 
     }
