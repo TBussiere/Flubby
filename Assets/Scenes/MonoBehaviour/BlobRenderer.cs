@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BlobRenderer : MonoBehaviour
 {
-    // Coordonnés de la grille autour du blob
+    // Coordonnï¿½s de la grille autour du blob
     public Vector2 bottom_left_corner;
     public Vector2 top_right_corner;
-    public float square_size = 0.3f;
+    public float square_size = 0.1f;
     public float offset = 1;
+    public float radius_blob = 1.0f;
     public GameObject blob;
 
     public Color lineColor = Color.red;
@@ -239,10 +240,44 @@ public class BlobRenderer : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
-        if (hit.collider != null && hit.collider.gameObject.tag == "Player") {
+        if (hit.collider != null && hit.collider.gameObject.tag == "Player")
+        {
             return 1;
         }
 
         return 0;
     }
+
+    float falloff(float x, float R)
+    {
+
+        float u = Mathf.Clamp(x / R, 0.0f, 1.0f);
+        float v = (1.0f - u * u);
+        return v * v * v;
+    }
+
+    float blend(float d1, float d2)
+    {
+        return d1 + d2;
+    }
+
+    float sphere(Vector2 centre, float radius, Vector2 p)
+    {
+        return falloff((centre - p).magnitude, radius);
+    }
+
+    float SI(Vector2 p)
+    {
+        float v = 0.0f;
+
+        for (int i = 0; i < blob.transform.childCount; i++)
+        {
+            Vector2 pos_particule = blob.transform.GetChild(i).position;
+            float s = sphere(pos_particule, radius_blob, p);
+            v = blend(v, s);
+        }
+
+        return v;
+    }
+
 }
