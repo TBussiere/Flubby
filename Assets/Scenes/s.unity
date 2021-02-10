@@ -3216,10 +3216,11 @@ MonoBehaviour:
   bottom_left_corner: {x: 0, y: 0}
   top_right_corner: {x: 0, y: 0}
   square_size: 0.4
-  offset: 0.4
+  offset: 0.6
   radius_blob: 0.6
   blob: {fileID: 1404135173}
-  lineColor: {r: 0.27399462, g: 1, b: 0.24056602, a: 1}
+  insideColor: {r: 0.28751338, g: 0.8584906, b: 0.28751338, a: 1}
+  lineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &850510031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,

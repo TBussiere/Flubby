@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_size: 2
-  coef_max: 1.7
+  coef_max: 1.8
   coef_min: 0.5
   delta_t: 2
   coef: 0

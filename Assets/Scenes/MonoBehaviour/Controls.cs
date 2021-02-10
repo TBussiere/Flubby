@@ -79,10 +79,10 @@ public class Controls : MonoBehaviour
     void OnMouseDrag()
     {
         drag();
-        foreach(SpringJoint2D spring in GetComponents<SpringJoint2D>())
+        /*foreach(SpringJoint2D spring in GetComponents<SpringJoint2D>())
         {
             spring.connectedBody.GetComponentInParent<Controls>().drag();
-        }
+        }*/
     }
     
     void OnCollisionEnter2D(Collision2D collision)

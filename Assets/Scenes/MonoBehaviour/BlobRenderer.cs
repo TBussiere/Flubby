@@ -12,7 +12,8 @@ public class BlobRenderer : MonoBehaviour
     public float radius_blob = 1.0f;
     public GameObject blob;
 
-    public Color lineColor = Color.red;
+    public Color insideColor = Color.green;
+    public Color lineColor = Color.black;
 
     Material lineMaterial;
 
@@ -115,9 +116,9 @@ public class BlobRenderer : MonoBehaviour
                 {
                     // Square points reference :
                     //
-                    // D k C
-                    // l . j
-                    // A i B
+                    // D K C
+                    // L . J
+                    // A I B
 
 
                     // Sommets
@@ -139,6 +140,7 @@ public class BlobRenderer : MonoBehaviour
 
                     int state = GetState(sa, sb, sc, sd);
 
+                    // Inside color
                     switch (state)
                     {
                         case 1:
@@ -208,6 +210,57 @@ public class BlobRenderer : MonoBehaviour
                         default:
                             break;
                     }
+
+                    // Edges
+                    switch (state)
+                    {
+                        case 1:
+                            DrawThickLine(L, K);
+                            break;
+                        case 2:
+                            DrawThickLine(K, J);
+                            break;
+                        case 3:
+                            DrawThickLine(L, J);
+                            break;
+                        case 4:
+                            DrawThickLine(I, J);
+                            break;
+                        case 5:
+                            DrawThickLine(L, I);
+                            DrawThickLine(J, K);
+                            break;
+                        case 6:
+                            DrawThickLine(I, K);
+                            break;
+                        case 7:
+                            DrawThickLine(L, I);
+                            break;
+                        case 8:
+                            DrawThickLine(L, I);
+                            break;
+                        case 9:
+                            DrawThickLine(K, I);
+                            break;
+                        case 10:
+                            DrawThickLine(L, K);
+                            DrawThickLine(J, I);
+                            break;
+                        case 11:
+                            DrawThickLine(J, I);
+                            break;
+                        case 12:
+                            DrawThickLine(L, J);
+                            break;
+                        case 13:
+                            DrawThickLine(K, J);
+                            break;
+                        case 14:
+                            DrawThickLine(L, K);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
@@ -219,11 +272,39 @@ public class BlobRenderer : MonoBehaviour
     void DrawTriangle(Vector2 a, Vector2 b, Vector2 c)
     {
         GL.Begin(GL.TRIANGLES);
-        GL.Color(lineColor);
+        GL.Color(insideColor);
 
         GL.Vertex3(a.x, a.y, 0);
         GL.Vertex3(b.x, b.y, 0);
         GL.Vertex3(c.x, c.y, 0);
+
+        GL.End();
+    }
+
+    void DrawLine(Vector2 a, Vector2 b)
+    {
+        GL.Begin(GL.LINES);
+        GL.Color(lineColor);
+
+        GL.Vertex3(a.x, a.y, 0);
+        GL.Vertex3(b.x, b.y, 0);
+
+        GL.End();
+    }
+
+    void DrawThickLine(Vector2 a, Vector2 b)
+    {
+        GL.Begin(GL.LINES);
+        GL.Color(lineColor);
+
+        for (float i = -0.05f; i < 0.05f; i += 0.01f)
+        {
+            for (float j = -0.05f; j < 0.05f; j += 0.01f)
+            {
+                GL.Vertex3(a.x + i, a.y + j, 0);
+                GL.Vertex3(b.x + i, b.y + j, 0);
+            }
+        }
 
         GL.End();
     }
