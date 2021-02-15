@@ -17,9 +17,11 @@ public class BoundingBox : MonoBehaviour
 
     public float distance_max_autorisee = 2f;
     Vector2 last_pos_click;
-    GameObject last_particule;
+    public GameObject last_particule;
 
     Dictionary<int, Controls> ParticuleToControls = new Dictionary<int, Controls>();
+
+    public bool clicked;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,8 @@ public class BoundingBox : MonoBehaviour
         {
             ParticuleToControls.Add(p.GetInstanceID(), p.GetComponent<Controls>());
         }
+
+        clicked = false;
     }
 
     // Update is called once per frame
@@ -57,12 +61,31 @@ public class BoundingBox : MonoBehaviour
         // Debug.Log("bottom left : " + bottom_left_corner);
         // Debug.Log("top right : " + top_right_corner);
 
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (si on est dans la bbox) {
+                if (clicked == false)
+                {
+                    // Recupère la plus proche
+                    clicked = true;
+                }
+                else
+                {
+                    // Drag
+                }
+            }
+        }
+        else
+        {
+            clicked = false;
+        }
     }
 
     GameObject GetClosestParticule(Vector2 MousePos)
     {
-        if (blob_renderer.isBlobSI(MousePos) == 1)
-        {
+        //if (blob_renderer.isBlobSI(MousePos) == 1)
+        //{
             GameObject particule = blob_view.particules[0];
             Vector2 pos2D = new Vector2(particule.transform.position.x, particule.transform.position.y);
             float min_distance = (pos2D - MousePos).magnitude;
@@ -72,20 +95,22 @@ public class BoundingBox : MonoBehaviour
                 GameObject p = blob_view.particules[i];
                 pos2D = new Vector2(p.transform.position.x, p.transform.position.y);
                 float d = (pos2D - MousePos).magnitude;
+                Debug.Log(d);
                 if (d < min_distance)
                 {
                     min_distance = d;
                     particule = p;
                 }
             }
-            // Debug.Log(particule);
+
+            Debug.Log(particule);
             return particule;
 
-        }
-        return null;
+        //}
+        //return null;
     }
 
-    void OnMouseDown()
+    void MouseIsDown()
     {
         Debug.Log("Drag box collider");
         // https://forum.unity.com/threads/onmousedrag.522567/
@@ -94,21 +119,22 @@ public class BoundingBox : MonoBehaviour
         // if (p != null)
         //     p.GetComponent<Controls>().OnMouseDown();
 
-        if (last_particule == null || (last_pos_click - MousePos).magnitude > distance_max_autorisee)
+        /*if (last_particule == null || (last_pos_click - MousePos).magnitude > distance_max_autorisee)
         {
             last_particule = GetClosestParticule(MousePos);
             last_pos_click = MousePos;
         }
 
         if (last_particule != null)
-            last_particule.GetComponent<Controls>().OnMouseDown();
+            last_particule.GetComponent<Controls>().OnMouseDown();*/
 
 
+        last_particule = GetClosestParticule(MousePos);
     }
 
-    void OnMouseDrag()
+    void MouseDrag()
     {
-        Debug.Log("drag bb");
+        /*Debug.Log("drag bb");
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         // GameObject p = GetClosestParticule(MousePos);
         // if (p != null)
@@ -123,7 +149,7 @@ public class BoundingBox : MonoBehaviour
         {
             // Debug.Log("last = " + last_particule.transform.position);
             last_particule.GetComponent<Controls>().drag();
-        }
+        }*/
     }
 
     void ComputeBoundingBox()

@@ -55,13 +55,13 @@ public class Controls : MonoBehaviour
 
     public void drag()
     {
-        Debug.Log("drag");
+        //Debug.Log("drag");
         float time_elapsed = Mathf.Min(Time.time - when_clicked, delta_t);
         coef = coef_max - (coef_max - coef_min) * (time_elapsed / delta_t);
         Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mouse_pos);
+        //Debug.Log(mouse_pos);
         Vector3 direction = mouse_pos - this.transform.position;
-        Debug.Log(direction.magnitude);
+        //Debug.Log(direction.magnitude);
         float magnitude = Mathf.Min(direction.magnitude, max_size);
 
         rb2D.AddForce(coef * magnitude * direction.normalized, ForceMode2D.Impulse);
