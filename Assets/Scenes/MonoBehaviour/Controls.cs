@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
-    public float max_size = 2;
-    public float coef_max = 0.5f;
-    public float coef_min = 0.2f;
-    public float delta_t = 1;
-    public float coef;
-    private Rigidbody2D rb2D;
-    private float when_clicked = 0; 
-    
-    public Color lineColor = Color.red;
+    //     public float max_size = 2;
+    //     public float coef_max = 0.5f;
+    //     public float coef_min = 0.2f;
+    //     public float delta_t = 1;
+    //     public float coef;
+    //     private Rigidbody2D rb2D;
+    //     private float when_clicked = 0; 
+
+    //     public Color lineColor = Color.red;
 
     Material lineMaterial;
 
@@ -78,7 +78,7 @@ public class Controls : MonoBehaviour
     //     // rb2D.AddForce(magnitude * drag_direction, ForceMode2D.Impulse);
     // }
 
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -89,13 +89,12 @@ public class Controls : MonoBehaviour
         }
     }
 
-    #if false
+#if false
     void OnRenderObject()
     {
         lineMaterial.SetPass(0);
 
         GL.PushMatrix();
-
 
         Vector3 part_pos = this.transform.position;
         Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -109,5 +108,5 @@ public class Controls : MonoBehaviour
 
         GL.PopMatrix();
     }
-    #endif
+#endif
 }
