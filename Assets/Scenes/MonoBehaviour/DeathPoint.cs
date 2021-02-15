@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class DeathPoint : MonoBehaviour
 {
-    public CheckPointsHandler cph;
+    private CheckPointsHandler cph;
     public bool crunchDeath = false;
     public bool playerDetected = false;
+    public bool groundDetected = false;
     public bool mouving = false;
     private Rigidbody2D rb;
 
+    public float playerRelativePosition;
+
     private bool once=true;
+    private int playerParticule = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,22 +42,12 @@ public class DeathPoint : MonoBehaviour
 
             mouving = rb.velocity.magnitude > 0.5f;
 
-            if (playerDetected && mouving)
+            if (playerDetected && mouving && groundDetected)
             {
-                Debug.Log("Mouving et player");
-                RaycastHit2D[] hits;
-                Vector2 sensChute = new Vector2(transform.position.x, transform.position.y) + rb.velocity;
-                //Ray2D r = new Ray2D(transform.position, sensChute);
-
-                hits = Physics2D.RaycastAll(transform.position, sensChute);
-
-                foreach (var hit in hits)
+                if ((Mathf.Sign(playerRelativePosition) == Mathf.Sign(rb.velocity.x)))
                 {
-                    if (hit.transform.tag == "Player")
-                    {
-                        cph.playReset();
-                        once = false;
-                    }
+                    cph.playReset();
+                    once = false;
                 }
             }
         }
@@ -69,7 +63,16 @@ public class DeathPoint : MonoBehaviour
             if (other.tag == "Player")
             {
                 playerDetected = true;
-            }          
+
+                Vector3 distance = other.transform.position - transform.position;
+                playerRelativePosition = Vector2.Dot(distance.normalized, transform.right.normalized);
+
+                playerParticule++;
+            }
+            else if (other.tag == "Ground")
+            {
+                groundDetected = true;
+            }
         }
         else
         {
@@ -84,9 +87,13 @@ public class DeathPoint : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && crunchDeath)
         {
-            playerDetected = false;
+            playerParticule--;
+            if (playerParticule == 0)
+            {
+                playerDetected = false;
+            }   
         }
     }
 }
