@@ -43,22 +43,25 @@ public class Controls : MonoBehaviour
         coef = coef_max;
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         // Reinit parameters
         when_clicked = Time.time;
         max_size = 5;
         coef = coef_max;
 
-        //Debug.Log(this.gameObject.name);
+        Debug.Log("mousedown");
     }
-    void drag()
+
+    public void drag()
     {
+        Debug.Log("drag");
         float time_elapsed = Mathf.Min(Time.time - when_clicked, delta_t);
         coef = coef_max - (coef_max - coef_min) * (time_elapsed / delta_t);
         Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log(mouse_pos);
         Vector3 direction = mouse_pos - this.transform.position;
-
+        Debug.Log(direction.magnitude);
         float magnitude = Mathf.Min(direction.magnitude, max_size);
 
         rb2D.AddForce(coef * magnitude * direction.normalized, ForceMode2D.Impulse);
@@ -72,18 +75,8 @@ public class Controls : MonoBehaviour
         // float magnitude = Mathf.Min(drag_magnitude, fmax);
 
         // rb2D.AddForce(magnitude * drag_direction, ForceMode2D.Impulse);
-
     }
 
-    
-    void OnMouseDrag()
-    {
-        drag();
-        /*foreach(SpringJoint2D spring in GetComponents<SpringJoint2D>())
-        {
-            spring.connectedBody.GetComponentInParent<Controls>().drag();
-        }*/
-    }
     
     void OnCollisionEnter2D(Collision2D collision)
     {
