@@ -12,6 +12,9 @@ public class BlobRenderer : MonoBehaviour
     public GameObject blob;
     public BoundingBox blob_bb;
 
+    public int width;
+    public int height;
+
     public Color insideColor = Color.green;
     public Color lineColor = Color.black;
 
@@ -48,8 +51,6 @@ public class BlobRenderer : MonoBehaviour
         
     }
 
-    
-
     void OnPostRender()
     {
         if (!lineMaterial)
@@ -84,157 +85,17 @@ public class BlobRenderer : MonoBehaviour
 #if true
         if (square_size > 0)
         {
-            for (float x_travel = blob_bb.bottom_left_corner.x; x_travel < blob_bb.top_right_corner.x; x_travel += square_size)
+            float[,] gridValues = ComputeGrid();
+
+            for (int x = 0; x < width - 1; x++)
             {
-                for (float y_travel = blob_bb.bottom_left_corner.y; y_travel < blob_bb.top_right_corner.y; y_travel += square_size)
+                for (int y = 0; y < height - 1; y++)
                 {
-                    // Square points reference :
-                    //
-                    // D K C
-                    // L . J
-                    // A I B
-
-
-                    // Sommets
-                    var A = new Vector2(x_travel, y_travel);
-                    var B = new Vector2(x_travel + square_size, y_travel);
-                    var C = new Vector2(x_travel + square_size, y_travel + square_size);
-                    var D = new Vector2(x_travel, y_travel + square_size);
-
-                    // Milieu des segments
-                    var I = new Vector2(x_travel + square_size * 0.5f, y_travel);
-                    var J = new Vector2(x_travel + square_size, y_travel + square_size * 0.5f);
-                    var K = new Vector2(x_travel + square_size * 0.5f, y_travel + square_size);
-                    var L = new Vector2(x_travel, y_travel + square_size * 0.5f);
-
-                    int sa = isBlobSI(A);
-                    int sb = isBlobSI(B);
-                    int sc = isBlobSI(C);
-                    int sd = isBlobSI(D);
-
-                    int state = GetState(sa, sb, sc, sd);
-
-                    // Inside color
-                    switch (state)
-                    {
-                        case 1:
-                            DrawTriangle(K, D, L);
-                            break;
-                        case 2:
-                            DrawTriangle(J, C, K);
-                            break;
-                        case 3:
-                            DrawTriangle(J, D, L);
-                            DrawTriangle(D, J, C);
-                            break;
-                        case 4:
-                            DrawTriangle(I, B, J);
-                            break;
-                        case 5:
-                            DrawTriangle(B, L, I);
-                            DrawTriangle(B, D, L);
-                            DrawTriangle(B, K, D);
-                            DrawTriangle(B, J, K);
-                            break;
-                        case 6:
-                            DrawTriangle(B, C, K);
-                            DrawTriangle(K, I, B);
-                            break;
-                        case 7:
-                            DrawTriangle(C, D, L);
-                            DrawTriangle(C, L, I);
-                            DrawTriangle(C, I, B);
-                            break;
-                        case 8:
-                            DrawTriangle(A, I, L);
-                            break;
-                        case 9:
-                            DrawTriangle(A, K, D);
-                            DrawTriangle(A, I, K);
-                            break;
-                        case 10:
-                            DrawTriangle(A, I, J);
-                            DrawTriangle(A, J, C);
-                            DrawTriangle(A, C, K);
-                            DrawTriangle(A, K, L);
-                            break;
-                        case 11:
-                            DrawTriangle(D, A, I);
-                            DrawTriangle(D, I, J);
-                            DrawTriangle(D, J, C);
-                            break;
-                        case 12:
-                            DrawTriangle(L, A, J);
-                            DrawTriangle(A, B, J);
-                            break;
-                        case 13:
-                            DrawTriangle(A, B, J);
-                            DrawTriangle(A, J, K);
-                            DrawTriangle(A, K, D);
-                            break;
-                        case 14:
-                            DrawTriangle(B, C, K);
-                            DrawTriangle(B, K, L);
-                            DrawTriangle(B, L, A);
-                            break;
-                        case 15:
-                            DrawTriangle(A, B, C);
-                            DrawTriangle(A, C, D);
-                            break;
-                        default:
-                            break;
-                    }
-
-                    // Edges
-                    switch (state)
-                    {
-                        case 1:
-                            DrawThickLine(L, K);
-                            break;
-                        case 2:
-                            DrawThickLine(K, J);
-                            break;
-                        case 3:
-                            DrawThickLine(L, J);
-                            break;
-                        case 4:
-                            DrawThickLine(I, J);
-                            break;
-                        case 5:
-                            DrawThickLine(L, I);
-                            DrawThickLine(J, K);
-                            break;
-                        case 6:
-                            DrawThickLine(I, K);
-                            break;
-                        case 7:
-                            DrawThickLine(L, I);
-                            break;
-                        case 8:
-                            DrawThickLine(L, I);
-                            break;
-                        case 9:
-                            DrawThickLine(K, I);
-                            break;
-                        case 10:
-                            DrawThickLine(L, K);
-                            DrawThickLine(J, I);
-                            break;
-                        case 11:
-                            DrawThickLine(J, I);
-                            break;
-                        case 12:
-                            DrawThickLine(L, J);
-                            break;
-                        case 13:
-                            DrawThickLine(K, J);
-                            break;
-                        case 14:
-                            DrawThickLine(L, K);
-                            break;
-                        default:
-                            break;
-                    }
+                    Vector2 A = GridToWorld(x,      y);
+                    Vector2 B = GridToWorld(x + 1,  y);
+                    Vector2 C = GridToWorld(x + 1,  y + 1);
+                    Vector2 D = GridToWorld(x,      y + 1);
+                    DrawSquare(A, B, C, D, gridValues[x, y], gridValues[x + 1, y], gridValues[x + 1, y + 1], gridValues[x, y + 1]);
                 }
             }
         }
@@ -242,6 +103,170 @@ public class BlobRenderer : MonoBehaviour
 
         GL.PopMatrix();
     }
+
+    void ComputeGridSize()
+    {
+        if (square_size > 0)
+        {
+            width = (int)(Mathf.Abs(blob_bb.bottom_left_corner.x - blob_bb.top_right_corner.x) / square_size);
+            height = (int)(Mathf.Abs(blob_bb.bottom_left_corner.y - blob_bb.top_right_corner.y) / square_size);
+        }
+    }
+
+    float[,] ComputeGrid()
+    {
+        float[,] gridVlaues = new float[width, height];
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                gridVlaues[x, y] = SI(new Vector2(blob_bb.bottom_left_corner.x + x * square_size, blob_bb.bottom_left_corner.y + y * square_size));
+            }
+        }
+
+        return gridVlaues;
+    }
+
+    void DrawSquare(Vector2 A, Vector2 B, Vector2 C, Vector2 D, float va, float vb, float vc, float vd)
+    {
+        // Square points reference :
+        //
+        // D K C
+        // L . J
+        // A I B
+
+        // Milieu des segments
+        var I = SurfacePositionEstimation(A, va, B, vb);
+        var J = SurfacePositionEstimation(B, vb, C, vc);
+        var K = SurfacePositionEstimation(C, vc, D, vd);
+        var L = SurfacePositionEstimation(D, vd, A, va);
+
+        int state = GetState(va, vb, vc, vd);
+
+        // Inside color
+        switch (state)
+        {
+            case 1:
+                DrawTriangle(K, D, L);
+                break;
+            case 2:
+                DrawTriangle(J, C, K);
+                break;
+            case 3:
+                DrawTriangle(J, D, L);
+                DrawTriangle(D, J, C);
+                break;
+            case 4:
+                DrawTriangle(I, B, J);
+                break;
+            case 5:
+                DrawTriangle(B, L, I);
+                DrawTriangle(B, D, L);
+                DrawTriangle(B, K, D);
+                DrawTriangle(B, J, K);
+                break;
+            case 6:
+                DrawTriangle(B, C, K);
+                DrawTriangle(K, I, B);
+                break;
+            case 7:
+                DrawTriangle(C, D, L);
+                DrawTriangle(C, L, I);
+                DrawTriangle(C, I, B);
+                break;
+            case 8:
+                DrawTriangle(A, I, L);
+                break;
+            case 9:
+                DrawTriangle(A, K, D);
+                DrawTriangle(A, I, K);
+                break;
+            case 10:
+                DrawTriangle(A, I, J);
+                DrawTriangle(A, J, C);
+                DrawTriangle(A, C, K);
+                DrawTriangle(A, K, L);
+                break;
+            case 11:
+                DrawTriangle(D, A, I);
+                DrawTriangle(D, I, J);
+                DrawTriangle(D, J, C);
+                break;
+            case 12:
+                DrawTriangle(L, A, J);
+                DrawTriangle(A, B, J);
+                break;
+            case 13:
+                DrawTriangle(A, B, J);
+                DrawTriangle(A, J, K);
+                DrawTriangle(A, K, D);
+                break;
+            case 14:
+                DrawTriangle(B, C, K);
+                DrawTriangle(B, K, L);
+                DrawTriangle(B, L, A);
+                break;
+            case 15:
+                DrawTriangle(A, B, C);
+                DrawTriangle(A, C, D);
+                break;
+            default:
+                break;
+        }
+
+        // Edges
+        switch (state)
+        {
+            case 1:
+                DrawThickLine(L, K);
+                break;
+            case 2:
+                DrawThickLine(K, J);
+                break;
+            case 3:
+                DrawThickLine(L, J);
+                break;
+            case 4:
+                DrawThickLine(I, J);
+                break;
+            case 5:
+                DrawThickLine(L, I);
+                DrawThickLine(J, K);
+                break;
+            case 6:
+                DrawThickLine(I, K);
+                break;
+            case 7:
+                DrawThickLine(L, I);
+                break;
+            case 8:
+                DrawThickLine(L, I);
+                break;
+            case 9:
+                DrawThickLine(K, I);
+                break;
+            case 10:
+                DrawThickLine(L, K);
+                DrawThickLine(J, I);
+                break;
+            case 11:
+                DrawThickLine(J, I);
+                break;
+            case 12:
+                DrawThickLine(L, J);
+                break;
+            case 13:
+                DrawThickLine(K, J);
+                break;
+            case 14:
+                DrawThickLine(L, K);
+                break;
+            default:
+                break;
+        }
+    }
+
 
     void DrawTriangle(Vector2 a, Vector2 b, Vector2 c)
     {
@@ -284,9 +309,10 @@ public class BlobRenderer : MonoBehaviour
     }
 
     // convert "binary" to int (0 0 0 0 = 0)
-    int GetState(int a, int b, int c, int d)
+    // i.e. return the configuration ID
+    int GetState(float a, float b, float c, float d)
     {
-        return a * 8 + b * 4 + c * 2 + d * 1;
+        return isInsideSI(a) * 8 + isInsideSI(b) * 4 + isInsideSI(c) * 2 + isInsideSI(d) * 1;
     }
 
     int isBlobCollider(Vector2 p)
@@ -345,4 +371,36 @@ public class BlobRenderer : MonoBehaviour
         return 0;
     }
 
+    public int isInsideSI(float v)
+    {
+        if (v >= 0)
+            return 1;
+
+        return 0;
+    }
+
+    // Esimates linearly the surface parametric position
+    // return the parametric distance from a to b
+    // Default : 0
+    public float SurfaceParametricEstimation(float va, float vb)
+    {
+        if (va * vb < 0) // i.e. they have different sign 
+        {
+            return Mathf.Abs(va) / (Mathf.Abs(va) + Mathf.Abs(vb));
+        }
+
+        return 0;
+    }
+
+    // Estimate linearly the position where the surface crosses the [A, B] segment
+    // Default : A
+    public Vector2 SurfacePositionEstimation(Vector2 A, float va, Vector2 B, float vb)
+    {
+        return A + (B - A) * SurfaceParametricEstimation(va, vb);
+    }
+
+    public Vector2 GridToWorld(int x, int y)
+    {
+        return new Vector2(blob_bb.bottom_left_corner.x + x * square_size, blob_bb.bottom_left_corner.y + y * square_size);
+    }
 }

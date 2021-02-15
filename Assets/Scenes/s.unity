@@ -768,42 +768,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141770406}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &144077750 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5071170867046655478, guid: f80e87536cf3fe045869b1ffe5b53372,
-    type: 3}
-  m_PrefabInstance: {fileID: 2126639917}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &144077751 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5071170867046655476, guid: f80e87536cf3fe045869b1ffe5b53372,
-    type: 3}
-  m_PrefabInstance: {fileID: 2126639917}
-  m_PrefabAsset: {fileID: 0}
---- !u!233 &144077755
-HingeJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144077750}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 1
-  m_ConnectedRigidBody: {fileID: 343264264}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.48129845, y: -0.7727884}
-  m_ConnectedAnchor: {x: -0.37230372, y: 0.52772725}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
 --- !u!1 &151532386
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,14 +958,14 @@ Transform:
   - {fileID: 1030402478}
   - {fileID: 2035784760}
   - {fileID: 710169062}
-  - {fileID: 535418490}
+  - {fileID: 5071170867580249835}
   - {fileID: 499062093}
-  - {fileID: 2003894251}
   - {fileID: 1696952611}
   - {fileID: 855916028}
   - {fileID: 989105110}
-  - {fileID: 1778093599}
+  - {fileID: 2003894251}
   - {fileID: 140178859}
+  - {fileID: 1778093599}
   - {fileID: 343264263}
   - {fileID: 401839079}
   - {fileID: 2145707357}
@@ -1504,7 +1468,7 @@ Transform:
   m_LocalScale: {x: 23.8203, y: 1.4296867, z: 0.51}
   m_Children: []
   m_Father: {fileID: 239264493}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &343264264
 Rigidbody2D:
@@ -1696,7 +1660,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.5, y: -0.75}
-  m_ConnectedAnchor: {x: -0.36287865, y: 0.5962949}
+  m_ConnectedAnchor: {x: -0.26071778, y: 0.5962949}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1993,7 +1957,7 @@ Transform:
   m_LocalScale: {x: 20.4855, y: 1.4296867, z: 0.51}
   m_Children: []
   m_Father: {fileID: 239264493}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &414697890 stripped
 Transform:
@@ -4363,7 +4327,7 @@ Transform:
   m_Children:
   - {fileID: 398214848}
   m_Father: {fileID: 239264493}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1180524896
 PrefabInstance:
@@ -6401,7 +6365,7 @@ Transform:
   - {fileID: 2029292183}
   - {fileID: 1392699244}
   m_Father: {fileID: 239264493}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1808529140
 PrefabInstance:
@@ -6509,7 +6473,7 @@ Transform:
   m_LocalScale: {x: 8.160742, y: 1.4498751, z: 0.12056399}
   m_Children: []
   m_Father: {fileID: 239264493}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!50 &1821776472
 Rigidbody2D:
@@ -7714,7 +7678,7 @@ Transform:
   - {fileID: 1644904145}
   - {fileID: 472404742}
   m_Father: {fileID: 239264493}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2145707358
 MonoBehaviour:
@@ -7808,6 +7772,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f80e87536cf3fe045869b1ffe5b53372, type: 3}
+--- !u!4 &5071170867580249835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5071170867046655476, guid: f80e87536cf3fe045869b1ffe5b53372,
+    type: 3}
+  m_PrefabInstance: {fileID: 5071170867580249834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5836753671907742028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7992,7 +7962,7 @@ PrefabInstance:
     - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
         type: 3}
