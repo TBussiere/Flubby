@@ -30,10 +30,11 @@ public class BlobController : MonoBehaviour
     public Vector3 GetPosition()
     {
         Vector3 pos = new Vector3();
+
         foreach (GameObject item in view.particules)
             pos += item.transform.position;
 
-        return pos / view.particules.Count;
+        return pos / transform.childCount;
     }
 
     internal void reSpawnAt(Vector3 currentRespawnLocation)
