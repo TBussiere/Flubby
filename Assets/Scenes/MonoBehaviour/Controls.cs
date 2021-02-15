@@ -39,43 +39,44 @@ public class Controls : MonoBehaviour
 
     void Start()
     {
-        rb2D = gameObject.GetComponent<Rigidbody2D>();
-        coef = coef_max;
+        // rb2D = gameObject.GetComponent<Rigidbody2D>();
+        // coef = coef_max;
     }
 
-    public void OnMouseDown()
-    {
-        // Reinit parameters
-        when_clicked = Time.time;
-        max_size = 5;
-        coef = coef_max;
+    // public void OnMouseDown()
+    // {
+    //     // Reinit parameters
+    //     when_clicked = Time.time;
+    //     max_size = 5;
+    //     coef = coef_max;
 
-        Debug.Log("mousedown");
-    }
+    //     Debug.Log("mousedown");
+    // }
 
-    public void drag()
-    {
-        //Debug.Log("drag");
-        float time_elapsed = Mathf.Min(Time.time - when_clicked, delta_t);
-        coef = coef_max - (coef_max - coef_min) * (time_elapsed / delta_t);
-        Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Debug.Log(mouse_pos);
-        Vector3 direction = mouse_pos - this.transform.position;
-        //Debug.Log(direction.magnitude);
-        float magnitude = Mathf.Min(direction.magnitude, max_size);
+    // public void drag()
+    // {
+    //     //Debug.Log("drag");
+    //     float time_elapsed = Mathf.Min(Time.time - when_clicked, delta_t);
+    //     coef = coef_max - (coef_max - coef_min) * (time_elapsed / delta_t);
+    //     Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //     //Debug.Log(mouse_pos);
+    //     Vector3 direction = mouse_pos - this.transform.position;
+    //     //Debug.Log(direction.magnitude);
+    //     float magnitude = Mathf.Min(direction.magnitude, max_size);
+    //     Vector3 force = coef * magnitude * direction.normalized;
+    //     Debug.Log("Force dans control : " + force);
+    //     rb2D.AddForce(force, ForceMode2D.Impulse);
 
-        rb2D.AddForce(coef * magnitude * direction.normalized, ForceMode2D.Impulse);
+    //     // Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //     // Vector3 drag_vector = mouse_pos - this.transform.position;
 
-        // Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // Vector3 drag_vector = mouse_pos - this.transform.position;
+    //     // float drag_magnitude = drag_vector.magnitude;
+    //     // Vector3 drag_direction = drag_vector.normalized;
+    //     // // float magnitude = Mathf.Min(direction.magnitude, max_drag_distance);
+    //     // float magnitude = Mathf.Min(drag_magnitude, fmax);
 
-        // float drag_magnitude = drag_vector.magnitude;
-        // Vector3 drag_direction = drag_vector.normalized;
-        // // float magnitude = Mathf.Min(direction.magnitude, max_drag_distance);
-        // float magnitude = Mathf.Min(drag_magnitude, fmax);
-
-        // rb2D.AddForce(magnitude * drag_direction, ForceMode2D.Impulse);
-    }
+    //     // rb2D.AddForce(magnitude * drag_direction, ForceMode2D.Impulse);
+    // }
 
     
     void OnCollisionEnter2D(Collision2D collision)
