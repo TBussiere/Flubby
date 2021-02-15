@@ -2501,21 +2501,6 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 31.309875
       objectReference: {fileID: 0}
-    - target: {fileID: 3417995998836990759, guid: b7482393dd6e1b64fb5451c42e049c21,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2.73883
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417995998836990759, guid: b7482393dd6e1b64fb5451c42e049c21,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0.4826904
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417995998836990759, guid: b7482393dd6e1b64fb5451c42e049c21,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.14240646
-      objectReference: {fileID: 0}
     - target: {fileID: 6108992085797326582, guid: b7482393dd6e1b64fb5451c42e049c21,
         type: 3}
       propertyPath: m_Name
@@ -4731,7 +4716,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -2.6618536, y: -0.6210937}
@@ -5859,26 +5844,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UseAutoMass
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417995998836990759, guid: b7482393dd6e1b64fb5451c42e049c21,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 8.623367
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417995998836990759, guid: b7482393dd6e1b64fb5451c42e049c21,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 31.09425
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417995998836990759, guid: b7482393dd6e1b64fb5451c42e049c21,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -2.3157806
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417995998836990759, guid: b7482393dd6e1b64fb5451c42e049c21,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 1.1634955
       objectReference: {fileID: 0}
     - target: {fileID: 6108992085797326582, guid: b7482393dd6e1b64fb5451c42e049c21,
         type: 3}
