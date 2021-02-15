@@ -5,18 +5,22 @@ using UnityEngine;
 public class BlobRenderer : MonoBehaviour
 {
     // Coordonn�s de la grille autour du blob
-    public Vector2 bottom_left_corner;
-    public Vector2 top_right_corner;
+    
     public float square_size = 0.1f;
-    public float offset = 1;
+    
     public float radius_blob = 1.0f;
     public GameObject blob;
+    public BoundingBox blob_bb;
 
     public Color insideColor = Color.green;
     public Color lineColor = Color.black;
 
     Material lineMaterial;
 
+    void Start()
+    {
+        // blob_bb = blob.GetComponent<BoundingBox>();
+    }
     void Awake()
     {
         // must be called before trying to draw lines..
@@ -41,40 +45,10 @@ public class BlobRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ComputeBoundingBox();
+        
     }
 
-    void ComputeBoundingBox()
-    {
-        bottom_left_corner = blob.transform.GetChild(0).position;
-        top_right_corner = blob.transform.GetChild(0).position;
-
-        for (int i = 0; i < blob.transform.childCount; i++)
-        {
-            Transform child = blob.transform.GetChild(i);
-
-            if (child.position.x <= bottom_left_corner.x)
-            {
-                bottom_left_corner.x = child.position.x;
-            }
-            else if (child.position.x >= top_right_corner.x)
-            {
-                top_right_corner.x = child.position.x;
-            }
-
-            if (child.position.y <= bottom_left_corner.y)
-            {
-                bottom_left_corner.y = child.position.y;
-            }
-            else if (child.position.y >= top_right_corner.y)
-            {
-                top_right_corner.y = child.position.y;
-            }
-        }
-
-        bottom_left_corner -= new Vector2(offset, offset);
-        top_right_corner += new Vector2(offset, offset);
-    }
+    
 
     void OnPostRender()
     {
@@ -92,16 +66,16 @@ public class BlobRenderer : MonoBehaviour
         GL.Begin(GL.LINES);
         GL.Color(lineColor);
 
-        for (float x_travel = bottom_left_corner.x; x_travel < top_right_corner.x; x_travel += square_size)
+        for (float x_travel = blob_bb.bottom_left_corner.x; x_travel < blob_bb.top_right_corner.x; x_travel += square_size)
         {
-            GL.Vertex3(x_travel, bottom_left_corner.y, 0);
-            GL.Vertex3(x_travel, top_right_corner.y, 0);
+            GL.Vertex3(x_travel, blob_bb.bottom_left_corner.y, 0);
+            GL.Vertex3(x_travel, blob_bb.top_right_corner.y, 0);
         }
 
-        for (float y_travel = bottom_left_corner.y; y_travel < top_right_corner.y; y_travel += square_size)
+        for (float y_travel = blob_bb.bottom_left_corner.y; y_travel < blob_bb.top_right_corner.y; y_travel += square_size)
         {
-            GL.Vertex3(bottom_left_corner.x, y_travel, 0);
-            GL.Vertex3(top_right_corner.x, y_travel, 0);
+            GL.Vertex3(blob_bb.bottom_left_corner.x, y_travel, 0);
+            GL.Vertex3(blob_bb.top_right_corner.x, y_travel, 0);
         }
         GL.End();
 #endif
@@ -110,9 +84,9 @@ public class BlobRenderer : MonoBehaviour
 #if true
         if (square_size > 0)
         {
-            for (float x_travel = bottom_left_corner.x; x_travel < top_right_corner.x; x_travel += square_size)
+            for (float x_travel = blob_bb.bottom_left_corner.x; x_travel < blob_bb.top_right_corner.x; x_travel += square_size)
             {
-                for (float y_travel = bottom_left_corner.y; y_travel < top_right_corner.y; y_travel += square_size)
+                for (float y_travel = blob_bb.bottom_left_corner.y; y_travel < blob_bb.top_right_corner.y; y_travel += square_size)
                 {
                     // Square points reference :
                     //
@@ -361,7 +335,7 @@ public class BlobRenderer : MonoBehaviour
         return v;
     }
 
-    int isBlobSI(Vector2 p)
+    public int isBlobSI(Vector2 p)
     {
         float si = SI(p);
 
