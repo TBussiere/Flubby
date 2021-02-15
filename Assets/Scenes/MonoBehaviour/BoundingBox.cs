@@ -92,7 +92,7 @@ public class BoundingBox : MonoBehaviour
             GameObject p = blob_view.particules[i];
             pos2D = new Vector2(p.transform.position.x, p.transform.position.y);
             float d = (pos2D - MousePos).magnitude;
-            Debug.Log(d);
+            //Debug.Log(d);
             if (d < min_distance)
             {
                 min_distance = d;
@@ -115,7 +115,7 @@ public class BoundingBox : MonoBehaviour
         Vector3 direction = MousePos - last_particule.transform.position;
         float magnitude = Mathf.Min(direction.magnitude, max_size);
         Vector3 force = coef * magnitude * direction.normalized;
-        Debug.Log("Force appliquée : " + force);
+        //Debug.Log("Force appliquée : " + force);
         ParticuleToRigidbody2D[last_particule.GetInstanceID()].AddForce(force, ForceMode2D.Impulse);
     }
 

@@ -51,7 +51,7 @@ public class BlobRenderer : MonoBehaviour
         ComputeGridSize();
     }
 
-    void OnPostRender()
+    void OnRenderObject()
     {
         if (!lineMaterial)
         {
