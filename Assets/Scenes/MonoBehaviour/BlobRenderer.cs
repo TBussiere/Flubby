@@ -48,7 +48,7 @@ public class BlobRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ComputeGridSize();
     }
 
     void OnPostRender()
@@ -143,6 +143,8 @@ public class BlobRenderer : MonoBehaviour
         var L = SurfacePositionEstimation(D, vd, A, va);
 
         int state = GetState(va, vb, vc, vd);
+        //Debug.Log("======== State = " + va + " " + vb + " " + vc + " " + vd);
+        //Debug.Log("======== State = " + state);
 
         // Inside color
         switch (state)
@@ -358,14 +360,14 @@ public class BlobRenderer : MonoBehaviour
             v = blend(v, s);
         }
 
-        return v;
+        return v - 0.5f;
     }
 
     public int isBlobSI(Vector2 p)
     {
         float si = SI(p);
 
-        if (si >= 0.1)
+        if (si >= 0f)
             return 1;
 
         return 0;
@@ -373,7 +375,7 @@ public class BlobRenderer : MonoBehaviour
 
     public int isInsideSI(float v)
     {
-        if (v >= 0)
+        if (v >= 0f)
             return 1;
 
         return 0;
@@ -384,12 +386,7 @@ public class BlobRenderer : MonoBehaviour
     // Default : 0
     public float SurfaceParametricEstimation(float va, float vb)
     {
-        if (va * vb < 0) // i.e. they have different sign 
-        {
-            return Mathf.Abs(va) / (Mathf.Abs(va) + Mathf.Abs(vb));
-        }
-
-        return 0;
+        return Mathf.Abs(va) / (Mathf.Abs(va) + Mathf.Abs(vb));
     }
 
     // Estimate linearly the position where the surface crosses the [A, B] segment
