@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +13,20 @@ public class CheckPointsHandler : MonoBehaviour
     public BlobController refBlob;
 
     private GameObject saveScene;
+    private bool triggered = false;
+    public float timerDuration;
+    public float timer;
 
     // Start is called before the first frame update
     void Start()
     {
         UnityEngine.Assertions.Assert.IsNotNull(refScene, "Script CheckPointsHandler needs ref to scene GameObject. obj : " + this.name);
         UnityEngine.Assertions.Assert.IsNotNull(refBlob, "Script CheckPointsHandler needs ref to blob BlobController. obj : " + this.name);
+        if (timerDuration < 0)
+        {
+            timerDuration = 1;
+        }
+
         foreach (var cp in GetComponentsInChildren<BoxCollider2D>())
         {
             CPs.Add(cp);
@@ -29,9 +38,18 @@ public class CheckPointsHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (triggered)
         {
-            ResetToCP();
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else
+            {
+                ResetToCP();
+                triggered = false;
+            }
+
         }
     }
 
@@ -43,6 +61,11 @@ public class CheckPointsHandler : MonoBehaviour
         saveScene.SetActive(false);
     }
 
+    internal void deathAnim()
+    {
+        refBlob.view.kill_blob();
+    }
+
     public void ResetToCP()
     {
         refBlob.reSpawnAt(this.CurrentRespawnLocation);
@@ -51,5 +74,13 @@ public class CheckPointsHandler : MonoBehaviour
         refScene.SetActive(true);
         saveScene = Instantiate(refScene);
         saveScene.SetActive(false);
+    }
+
+
+    public void playReset()
+    {
+        triggered = true;
+        deathAnim();
+        timer = timerDuration;
     }
 }

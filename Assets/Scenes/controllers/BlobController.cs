@@ -7,9 +7,12 @@ public class BlobController : MonoBehaviour
 {
     public Graph model = new Graph();
     public BlobView view;
+
+    public CheckPointsHandler cph;
     // Start is called before the first frame update
     void Start()
     {
+        UnityEngine.Assertions.Assert.IsNotNull(cph, "Script BlobController needs ref to CheckPointsHandler. obj : " + this.name);
         // model = new Graph();
         // view = new BlobView();
 
@@ -18,7 +21,10 @@ public class BlobController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.K))
+        {
+            cph.playReset();
+        }
     }
 
     public Vector3 GetPosition()

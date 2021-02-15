@@ -84,11 +84,6 @@ public class BlobView : MonoBehaviour
     {
         // Suppression de liaisons
         break_particles_links(0.3f, 5);
-
-        if (Input.GetKeyDown("k"))
-        {
-            kill_blob();
-        }
     }
 
     GameObject create_particle(Vector3 position)
