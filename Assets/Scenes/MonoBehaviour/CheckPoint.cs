@@ -18,7 +18,7 @@ public class CheckPoint : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                Debug.Log(this.name + " has been passed");
+                Debug.Log(this.name + " has been passed at " + transform.position);
                 Passed = true;
                 Handler.CPpass(this.gameObject);
             }

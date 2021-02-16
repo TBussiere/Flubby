@@ -63,7 +63,7 @@ public class BlobRenderer : MonoBehaviour
         lineMaterial.SetPass(0);
 
         // Show grid
-#if false
+#if true
         GL.Begin(GL.LINES);
         GL.Color(lineColor);
 

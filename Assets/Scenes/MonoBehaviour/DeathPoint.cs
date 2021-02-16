@@ -95,5 +95,9 @@ public class DeathPoint : MonoBehaviour
                 playerDetected = false;
             }   
         }
+        else if (other.tag == "Ground")
+        {
+            groundDetected = false;
+        }
     }
 }
