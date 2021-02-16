@@ -24,7 +24,7 @@ public class CheckPointsHandler : MonoBehaviour
         UnityEngine.Assertions.Assert.IsNotNull(refBlob, "Script CheckPointsHandler needs ref to blob BlobController. obj : " + this.name);
         if (timerDuration < 0)
         {
-            timerDuration = 1;
+            timerDuration = 2;
         }
 
         foreach (var cp in GetComponentsInChildren<BoxCollider2D>())
