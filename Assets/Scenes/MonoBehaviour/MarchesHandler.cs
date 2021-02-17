@@ -9,6 +9,7 @@ public class MarchesHandler : MonoBehaviour
     private CheckPointsHandler cph;
 
     public bool started = false;
+    public ScientistHand hand;
 
     AudioSource alarm;
     bool alarmState = false;
@@ -100,7 +101,7 @@ public class MarchesHandler : MonoBehaviour
         if (alarmState)
         {
             alarm.enabled = true;
-            cph.playReset(ResetEnum.NO_ANIM);
+            hand.Trigger();
         }
     }
 

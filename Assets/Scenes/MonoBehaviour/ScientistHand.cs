@@ -73,5 +73,8 @@ public class ScientistHand : MonoBehaviour
         }
     }
 
-
+    public void Trigger()
+    {
+        triggered = true;
+    }
 }
