@@ -6,6 +6,8 @@ public class GyrophareHandler : MonoBehaviour
 {   
     // pour activer le pick des couleurs en HDR dans l'interface
     // https://unitycoder.com/blog/2019/05/25/enable-hdr-color-picker-for-shader-or-script/
+    // et pour utiliser le post processing dans un script
+    // https://github.com/Unity-Technologies/PostProcessing/wiki/Manipulating-the-Stack
     PostProcessVolume m_Volume;
     ColorGrading m_color_grading;
 
