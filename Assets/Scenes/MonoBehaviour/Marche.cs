@@ -20,6 +20,7 @@ public class Marche : MonoBehaviour
             if (Handler.safe)
             {
                 Passed = true;
+                Handler.changeState();
             }
             else
             {
