@@ -5,12 +5,12 @@ using UnityEngine;
 public class BubbleParticle : MonoBehaviour
 {
 
-    ParticleSystem particleSystem = null;
+    ParticleSystem particle = null;
     // Start is called before the first frame update
     void Start()
     {
-        particleSystem = GetComponent<ParticleSystem>();
-        particleSystem.Play();
+        particle = GetComponent<ParticleSystem>();
+        particle.Play();
         Debug.Log("start play");
     }
 
