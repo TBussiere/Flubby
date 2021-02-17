@@ -1,3 +1,4 @@
+using Assets.Scenes.model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ public class MarchesHandler : MonoBehaviour
     AudioSource alarm;
     bool alarmState = false;
     AudioSource cardiogram;
+    AudioSource smallBip;
 
     float timeToBip;
     public float timerBase = 3;
@@ -21,8 +23,16 @@ public class MarchesHandler : MonoBehaviour
 
     public bool safe;
 
-
     int state = 0;
+
+    //Rng part
+    bool RunningSequence = false;
+    float blankTimer;
+    int bipsTodo;
+    float timeToBipPreventif;
+    int bipPreventif;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +46,7 @@ public class MarchesHandler : MonoBehaviour
 
         alarm = GetComponents<AudioSource>()[0];
         cardiogram = GetComponents<AudioSource>()[1];
+        smallBip = GetComponents<AudioSource>()[2];
         timeToBip = timerBase;
         safeTime = safeTimeBase;
     }
@@ -51,34 +62,45 @@ public class MarchesHandler : MonoBehaviour
     {
         if (started)
         {
-            if (timeToBip < (safeTimeBase / 2) || safe)
+            if (state >= 2 && state < 4)
             {
-                safeTime -= Time.deltaTime;
-                safe = true;
+                if (RunningSequence)
+                {
+                    if (bipPreventif > 0)
+                    {
+                        doBipPreventif(Time.deltaTime);
+                    }
+                    else
+                    {
+                        DepleteTime(Time.deltaTime);
+                    }   
+                }
+                else
+                {
+                    if (blankTimer < 0)
+                    {
+                        bipsTodo = UnityEngine.Random.Range(1, 5);
+                        bipPreventif = bipsTodo;
 
-            }
-            if(safeTime < 0)
-            {
-                safe = false;
-                safeTime = safeTimeBase;
-            }
-
-            if (timeToBip < 0)
-            {
-                cardiogram.enabled = false;
-                cardiogram.enabled = true;
-                timeToBip = timerBase;
+                        RunningSequence = true;
+                        blankTimer = UnityEngine.Random.Range(0.3f,2f);
+                    }
+                    else
+                    {
+                        blankTimer -= Time.deltaTime;
+                    }
+                }
             }
             else
             {
-                timeToBip -= Time.deltaTime;
+                DepleteTime(Time.deltaTime);
             }
         }
 
         if (alarmState)
         {
             alarm.enabled = true;
-            cph.playReset();
+            cph.playReset(ResetEnum.NO_ANIM);
         }
     }
 
@@ -87,8 +109,59 @@ public class MarchesHandler : MonoBehaviour
         started = true;
     }
 
-    void changeState()
+    public void changeState()
     {
         state++;
+    }
+
+
+    private void DepleteTime(float TimeToRemove)
+    {
+        if (timeToBip < (safeTimeBase / 2) || safe)
+        {
+            safeTime -= TimeToRemove;
+            safe = true;
+
+        }
+        if (safeTime < 0)
+        {
+            safe = false;
+            safeTime = safeTimeBase;
+        }
+
+        if (timeToBip < 0)
+        {
+            cardiogram.enabled = false;
+            cardiogram.enabled = true;
+            timeToBip = timerBase;
+            if (state >= 2)
+            {
+                bipsTodo--;
+                if (bipsTodo <= 0)
+                {
+                    RunningSequence = false;
+                }
+            }
+        }
+        else
+        {
+            timeToBip -= TimeToRemove;
+        }
+    }
+
+    private void doBipPreventif(float TimeToRemove)
+    {
+        if (timeToBipPreventif < 0)
+        {
+            smallBip.enabled = false;
+            smallBip.enabled = true;
+            timeToBipPreventif = smallBip.clip.length;
+
+            bipPreventif--;
+        }
+        else
+        {
+            timeToBipPreventif -= TimeToRemove;
+        }
     }
 }

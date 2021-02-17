@@ -1,3 +1,4 @@
+using Assets.Scenes.model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -77,10 +78,25 @@ public class CheckPointsHandler : MonoBehaviour
     }
 
 
-    public void playReset()
+    public void playReset(ResetEnum AnimType = ResetEnum.ANIME_EXPLODE)
     {
-        triggered = true;
-        deathAnim();
-        timer = timerDuration;
+        if (triggered == false)
+        {
+            triggered = true;
+            switch (AnimType)
+            {
+                case ResetEnum.NO_ANIM:
+                    //Nothing
+                    break;
+                case ResetEnum.ANIME_EXPLODE:
+                    deathAnim();
+                    break;
+                case ResetEnum.HAND_KILL:
+                    break;
+                default:
+                    break;
+            }
+            timer = timerDuration;
+        }
     }
 }
