@@ -436,7 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   started: 0
   timerBase: 3
-  safeTimeBase: 2
+  safeTimeBase: 1
   safe: 0
 --- !u!1 &438310179
 GameObject:
