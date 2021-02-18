@@ -33,6 +33,8 @@ public class MarchesHandler : MonoBehaviour
     int bipPreventif;
 
 
+    public float timeUntilHand = -1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +57,13 @@ public class MarchesHandler : MonoBehaviour
     {
         started = false;
         alarmState = true;
+    }
+
+    internal void stopAlarm()
+    {
+        alarmState = false;
+        alarm.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -91,6 +100,10 @@ public class MarchesHandler : MonoBehaviour
                     }
                 }
             }
+            else if (state == 4)
+            {
+                started = false;
+            }
             else
             {
                 DepleteTime(Time.deltaTime);
@@ -100,7 +113,10 @@ public class MarchesHandler : MonoBehaviour
         if (alarmState)
         {
             alarm.enabled = true;
-            cph.playReset(ResetEnum.NO_ANIM);
+            if (timeUntilHand < 0)
+                cph.playReset(ResetEnum.NO_ANIM);
+            else
+                timeUntilHand -= Time.deltaTime;
         }
     }
 
