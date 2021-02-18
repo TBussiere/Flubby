@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2604004969213903727}
   - component: {fileID: 4220193198351444436}
   - component: {fileID: 2589245580787103466}
+  - component: {fileID: 1852286652}
+  - component: {fileID: 1852286651}
   m_Layer: 0
   m_Name: hand_quickdraw
   m_TagString: Untagged
@@ -28,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3467323188490762143}
   m_LocalRotation: {x: -0, y: -0, z: 0.04497095, w: -0.99898833}
-  m_LocalPosition: {x: 2.03, y: 1.96, z: 0}
-  m_LocalScale: {x: 1.395, y: 1.3091, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6619268814870483694}
   m_RootOrder: 0
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ce80680d5a61df347b7132a00a136508, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -133,6 +135,49 @@ CapsuleCollider2D:
   m_Offset: {x: 0.24329495, y: -3.4348202}
   m_Size: {x: 1.0705589, y: 1.3286626}
   m_Direction: 0
+--- !u!61 &1852286652
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3467323188490762143}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.7701817, y: -3.6240869}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8.82, y: 8.89}
+    newSize: {x: 8.82, y: 8.89}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.2796364, y: 1.6418257}
+  m_EdgeRadius: 0
+--- !u!114 &1852286651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3467323188490762143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4000ea6819667c641aa26510fc4feac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crunchDeath: 0
+  playerDetected: 0
+  groundDetected: 0
+  mouving: 0
+  playerRelativePosition: 0
 --- !u!1 &5331081109663590676
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6619268814870483694}
+  - component: {fileID: 2101014103}
   m_Layer: 0
   m_Name: HandScientist
   m_TagString: Untagged
@@ -158,9 +204,31 @@ Transform:
   m_GameObject: {fileID: 5331081109663590676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_Children:
   - {fileID: 7189180889160647663}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2101014103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331081109663590676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41144e001d0807c49934c7cb4438a4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlobBBox: {fileID: 0}
+  blob_position: {x: 0, y: 0}
+  sprite_H_offset: 4.1
+  sprite_V_offset: 6.5
+  down_speed: 1
+  up_speed: 0.1
+  lateral_speed: 0.02
+  up_max_dist: 10
+  direction: 0
+  triggered: 0
