@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 public class GyrophareHandler : MonoBehaviour
-{   
+{
     // pour activer le pick des couleurs en HDR dans l'interface
     // https://unitycoder.com/blog/2019/05/25/enable-hdr-color-picker-for-shader-or-script/
     // et pour utiliser le post processing dans un script
@@ -18,25 +18,42 @@ public class GyrophareHandler : MonoBehaviour
     public float coef_vitesse;
     public bool enable = false;
 
-    void Start()
+    // Vignette
+    public float lower_intensity;
+    public float upper_intensity;
+    Vignette m_vignette;
+
+    void Awake()
     {
         m_color_grading = ScriptableObject.CreateInstance<ColorGrading>();
-        m_color_grading.enabled.Override(true);
-        // m_color_grading.intensity.Override(1f);
-        // m_color_grading.
         m_color_grading.colorFilter.Override(lower_filter_color);
+
+        m_vignette = ScriptableObject.CreateInstance<Vignette>();
+        m_vignette.intensity.Override(lower_intensity);
+
         m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_color_grading);
+        m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_vignette);
+    }
+
+    void OnEnable()
+    {
+        m_color_grading.enabled.Override(true);
+        m_vignette.enabled.Override(true);
     }
 
     void Update()
     {
-        // m_color_grading.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
-        if (enable)
-            m_color_grading.colorFilter.Interp(
-                lower_filter_color,
-                upper_filter_color,
-            Mathf.Sin(Time.realtimeSinceStartup * coef_vitesse));
+        float t = Mathf.Sin(Time.realtimeSinceStartup * coef_vitesse);
 
+        m_color_grading.colorFilter.value = Color.Lerp(
+            lower_filter_color,
+            upper_filter_color,
+            t);
+
+        m_vignette.intensity.value = Mathf.Lerp(
+            lower_intensity,
+            upper_intensity,
+            t);
     }
 
     void OnDestroy()

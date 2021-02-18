@@ -10,6 +10,9 @@ public class MarchesHandler : MonoBehaviour
 
     public bool started = false;
     public ScientistHand hand;
+    public GameObject alarmObject;
+    GyrophareHandler gyrophareHandler;
+    public float footstepsSoundDelay;
 
     AudioSource alarm;
     bool alarmState = false;
@@ -34,6 +37,8 @@ public class MarchesHandler : MonoBehaviour
     int bipPreventif;
 
 
+    public float timeUntilHand = -1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,14 +53,37 @@ public class MarchesHandler : MonoBehaviour
         alarm = GetComponents<AudioSource>()[0];
         cardiogram = GetComponents<AudioSource>()[1];
         smallBip = GetComponents<AudioSource>()[2];
+
         timeToBip = timerBase;
         safeTime = safeTimeBase;
+        gyrophareHandler = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GyrophareHandler>();
     }
 
     internal void RingAlarm()
     {
-        started = false;
-        alarmState = true;
+        if (alarmState == false)
+        {
+            started = false;
+            alarmState = true;
+            AudioSource[] audioSources = alarmObject.GetComponents<AudioSource>();            
+            gyrophareHandler.enabled = true;
+            audioSources[0].enabled = true;
+            audioSources[0].PlayDelayed(footstepsSoundDelay);
+            audioSources[1].enabled = true;
+        }
+    }
+
+    internal void stopAlarm()
+    {
+        if (alarmState == true)
+        {
+            alarmState = false;
+            alarm.enabled = false;
+            AudioSource[] audioSources = alarmObject.GetComponents<AudioSource>();
+            gyrophareHandler.enabled = false;
+            audioSources[0].enabled = false;
+            audioSources[1].enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -74,7 +102,7 @@ public class MarchesHandler : MonoBehaviour
                     else
                     {
                         DepleteTime(Time.deltaTime);
-                    }   
+                    }
                 }
                 else
                 {
@@ -84,13 +112,17 @@ public class MarchesHandler : MonoBehaviour
                         bipPreventif = bipsTodo;
 
                         RunningSequence = true;
-                        blankTimer = UnityEngine.Random.Range(0.3f,2f);
+                        blankTimer = UnityEngine.Random.Range(0.3f, 2f);
                     }
                     else
                     {
                         blankTimer -= Time.deltaTime;
                     }
                 }
+            }
+            else if (state == 4)
+            {
+                started = false;
             }
             else
             {
@@ -101,7 +133,10 @@ public class MarchesHandler : MonoBehaviour
         if (alarmState)
         {
             alarm.enabled = true;
-            hand.Trigger();
+            if (timeUntilHand < 0)
+                hand.Trigger();
+            else
+                timeUntilHand -= Time.deltaTime;
         }
     }
 
