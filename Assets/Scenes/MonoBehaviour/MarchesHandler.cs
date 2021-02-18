@@ -65,7 +65,7 @@ public class MarchesHandler : MonoBehaviour
         {
             started = false;
             alarmState = true;
-            AudioSource[] audioSources = alarmObject.GetComponents<AudioSource>();            
+            AudioSource[] audioSources = alarmObject.GetComponents<AudioSource>();
             gyrophareHandler.enabled = true;
             audioSources[0].enabled = true;
             audioSources[0].PlayDelayed(footstepsSoundDelay);
@@ -199,5 +199,10 @@ public class MarchesHandler : MonoBehaviour
         {
             timeToBipPreventif -= TimeToRemove;
         }
+    }
+
+    void OnDestroy()
+    {
+        this.stopAlarm();
     }
 }
