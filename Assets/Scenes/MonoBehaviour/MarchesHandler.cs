@@ -10,6 +10,10 @@ public class MarchesHandler : MonoBehaviour
 
     public bool started = false;
     public ScientistHand hand;
+    public GameObject alarmObject;
+    public GyrophareHandler gyrophareHandler;
+
+    public float footstepsSoundDelay;
 
     AudioSource alarm;
     bool alarmState = false;
@@ -52,12 +56,18 @@ public class MarchesHandler : MonoBehaviour
         smallBip = GetComponents<AudioSource>()[2];
         timeToBip = timerBase;
         safeTime = safeTimeBase;
+        gyrophareHandler = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GyrophareHandler>();
     }
 
     internal void RingAlarm()
     {
         started = false;
         alarmState = true;
+        AudioSource[] audioSources = alarmObject.GetComponents<AudioSource>();
+        gyrophareHandler.enabled = true;
+        audioSources[0].enabled = true;
+        audioSources[0].PlayDelayed(footstepsSoundDelay);
+        audioSources[1].enabled = true;
     }
 
     internal void stopAlarm()
