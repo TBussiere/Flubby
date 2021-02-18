@@ -9,14 +9,14 @@ public class GyrophareHandler : MonoBehaviour
     // et pour utiliser le post processing dans un script
     // https://github.com/Unity-Technologies/PostProcessing/wiki/Manipulating-the-Stack
     PostProcessVolume m_Volume;
-    ColorGrading m_color_grading;
+    public float coef_vitesse;
 
+    // Color Grading
+    ColorGrading m_color_grading;
     [ColorUsage(true, true)]
     public Color lower_filter_color;
     [ColorUsage(true, true)]
     public Color upper_filter_color;
-    public float coef_vitesse;
-    public bool enable = false;
 
     // Vignette
     public float lower_intensity;
@@ -26,19 +26,10 @@ public class GyrophareHandler : MonoBehaviour
     void Awake()
     {
         m_color_grading = ScriptableObject.CreateInstance<ColorGrading>();
-        m_color_grading.colorFilter.Override(lower_filter_color);
-
         m_vignette = ScriptableObject.CreateInstance<Vignette>();
-        m_vignette.intensity.Override(lower_intensity);
 
         m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_color_grading);
         m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_vignette);
-    }
-
-    void OnEnable()
-    {
-        m_color_grading.enabled.Override(true);
-        m_vignette.enabled.Override(true);
     }
 
     void Update()
@@ -54,6 +45,20 @@ public class GyrophareHandler : MonoBehaviour
             lower_intensity,
             upper_intensity,
             t);
+    }
+
+    void OnEnable()
+    {
+        m_color_grading.enabled.Override(true);
+        m_vignette.enabled.Override(true);
+        m_color_grading.colorFilter.Override(lower_filter_color);
+        m_vignette.intensity.Override(lower_intensity);
+    }
+
+    void OnDisable()
+    {
+        m_color_grading.enabled.Override(false);
+        m_vignette.enabled.Override(false);
     }
 
     void OnDestroy()
