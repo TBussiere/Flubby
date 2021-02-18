@@ -91,8 +91,6 @@ public class CheckPointsHandler : MonoBehaviour
                 case ResetEnum.ANIME_EXPLODE:
                     deathAnim();
                     break;
-                case ResetEnum.HAND_KILL:
-                    break;
                 default:
                     break;
             }
