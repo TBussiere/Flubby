@@ -2522,7 +2522,7 @@ MonoBehaviour:
   coef_vitesse: 1.5
   lower_filter_color: {r: 0.5377358, g: 0.34242612, b: 0.34242612, a: 0}
   upper_filter_color: {r: 0.9811321, g: 0.16197933, b: 0.16197933, a: 0}
-  lower_intensity: 0
+  lower_intensity: 0.2
   upper_intensity: 0.44
 --- !u!114 &2109910542
 MonoBehaviour:
