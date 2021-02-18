@@ -23,7 +23,7 @@ public class CameraMouvement : MonoBehaviour
         }
         mean_children_position /= blob.transform.childCount;
 
-        this.gameObject.transform.position = mean_children_position + new Vector3(5,5,-30);
-        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, -30) ;
+        this.gameObject.transform.position = mean_children_position + new Vector3(5,5,-80);
+        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, -80) ;
     }
 }
