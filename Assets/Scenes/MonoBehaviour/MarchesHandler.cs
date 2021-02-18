@@ -11,7 +11,7 @@ public class MarchesHandler : MonoBehaviour
     public bool started = false;
     public ScientistHand hand;
     public GameObject alarmObject;
-    public GyrophareHandler gyrophareHandler;
+    GyrophareHandler gyrophareHandler;
 
     public float footstepsSoundDelay;
 

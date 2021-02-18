@@ -1036,7 +1036,7 @@ MonoBehaviour:
   started: 0
   hand: {fileID: 0}
   alarmObject: {fileID: 311560063}
-  gyrophareHandler: {fileID: 328057006}
+  footstepsSoundDelay: 0
   timerBase: 3
   safeTimeBase: 2
   safe: 0
