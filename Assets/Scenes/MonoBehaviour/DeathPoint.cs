@@ -8,6 +8,7 @@ public class DeathPoint : MonoBehaviour
     public bool crunchDeath = false;
     public bool playerDetected = false;
     public bool groundDetected = false;
+    public bool bookDetected = false;
     public bool mouving = false;
     private Rigidbody2D rb;
 
@@ -35,7 +36,7 @@ public class DeathPoint : MonoBehaviour
 
     private void Update()
     {
-        if (crunchDeath)
+        if (crunchDeath && !bookDetected)
         {
             if (!once)
                 return;
@@ -73,6 +74,10 @@ public class DeathPoint : MonoBehaviour
             {
                 groundDetected = true;
             }
+            else if (other.tag == "Book")
+            {
+                bookDetected = true;
+            }
         }
         else
         {
@@ -83,11 +88,16 @@ public class DeathPoint : MonoBehaviour
             }
         }
 
-        AudioSource[] audio = this.GetComponents<AudioSource>();
-        if (audio.Length > 0)
+
+        if (other.tag == "Player")
         {
-            audio[0].Play();
-;        }
+            AudioSource[] audio = this.GetComponents<AudioSource>();
+            if (audio.Length > 0)
+            {
+                audio[0].Play();
+                ;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

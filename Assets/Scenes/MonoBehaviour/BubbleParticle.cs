@@ -22,6 +22,6 @@ public class BubbleParticle : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log("collision bubble");
+        //Debug.Log("collision bubble");
     }
 }
