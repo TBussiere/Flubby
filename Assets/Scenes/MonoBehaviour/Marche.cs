@@ -5,7 +5,7 @@ using UnityEngine;
 public class Marche : MonoBehaviour
 {
 
-    bool Passed;
+    public bool Passed;
     MarchesHandler Handler;
     // Start is called before the first frame update
     void Start()
@@ -17,9 +17,11 @@ public class Marche : MonoBehaviour
     {
         if (Passed == false)
         {
+            Passed = true;
+            Handler.playSplouch();
+
             if (Handler.safe)
             {
-                Passed = true;
                 Handler.changeState();
             }
             else

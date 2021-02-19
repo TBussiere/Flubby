@@ -82,7 +82,12 @@ public class DeathPoint : MonoBehaviour
                 once = false;
             }
         }
-        
+
+        AudioSource[] audio = this.GetComponents<AudioSource>();
+        if (audio.Length > 0)
+        {
+            audio[0].Play();
+;        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

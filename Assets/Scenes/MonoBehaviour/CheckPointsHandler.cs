@@ -12,6 +12,8 @@ public class CheckPointsHandler : MonoBehaviour
     public Vector3 CurrentRespawnLocation;
     public GameObject refScene;
     public BlobController refBlob;
+    public CameraMouvement cameraReset;
+    public bool cameraResetOnRespawn;
 
     private GameObject saveScene;
     private bool triggered = false;
@@ -75,6 +77,11 @@ public class CheckPointsHandler : MonoBehaviour
         refScene.SetActive(true);
         saveScene = Instantiate(refScene);
         saveScene.SetActive(false);
+
+        if (cameraResetOnRespawn && cameraReset)
+        {
+            cameraReset.ResetParameters();
+        }
     }
 
 

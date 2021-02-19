@@ -13,6 +13,8 @@ public class MarchesHandler : MonoBehaviour
     public GameObject alarmObject;
     GyrophareHandler gyrophareHandler;
     public float footstepsSoundDelay;
+    public GameObject RedSprite;
+    public CameraMouvement Camera;
 
     AudioSource alarm;
     bool alarmState = false;
@@ -70,6 +72,8 @@ public class MarchesHandler : MonoBehaviour
             audioSources[0].enabled = true;
             audioSources[0].PlayDelayed(footstepsSoundDelay);
             audioSources[1].enabled = true;
+
+            Camera.enabled = true;
         }
     }
 
@@ -150,6 +154,11 @@ public class MarchesHandler : MonoBehaviour
         state++;
     }
 
+    public void playSplouch()
+    {
+        this.GetComponents<AudioSource>()[3].Play();
+    }
+
 
     private void DepleteTime(float TimeToRemove)
     {
@@ -157,12 +166,14 @@ public class MarchesHandler : MonoBehaviour
         {
             safeTime -= TimeToRemove;
             safe = true;
+            RedSprite.SetActive(false);
 
         }
         if (safeTime < 0)
         {
             safe = false;
             safeTime = safeTimeBase;
+            RedSprite.SetActive(true);
         }
 
         if (timeToBip < 0)
