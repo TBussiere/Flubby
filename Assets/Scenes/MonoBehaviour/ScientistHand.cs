@@ -31,6 +31,7 @@ public class ScientistHand : MonoBehaviour
         if (triggered)
         {
             Move();
+            Debug.Log("ALLOW ?");
         }
 
         if (Input.GetKeyDown(KeyCode.H))

@@ -59,6 +59,8 @@ public class MarchesHandler : MonoBehaviour
         timeToBip = timerBase;
         safeTime = safeTimeBase;
         gyrophareHandler = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GyrophareHandler>();
+
+        hand.gameObject.SetActive(false);
     }
 
     internal void RingAlarm()
@@ -147,6 +149,7 @@ public class MarchesHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         started = true;
+        hand.gameObject.SetActive(true);
     }
 
     public void changeState()

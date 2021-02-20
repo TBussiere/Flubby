@@ -58,10 +58,13 @@ public class CheckPointsHandler : MonoBehaviour
 
     public void CPpass(GameObject cp)
     {
-        Destroy(saveScene);
-        CurrentRespawnLocation = new Vector3(cp.transform.position.x,cp.transform.position.y,0);
-        saveScene = Instantiate(refScene);
-        saveScene.SetActive(false);
+        if (triggered == false)
+        {
+            Destroy(saveScene);
+            CurrentRespawnLocation = new Vector3(cp.transform.position.x, cp.transform.position.y, 0);
+            saveScene = Instantiate(refScene);
+            saveScene.SetActive(false);
+        }   
     }
 
     internal void deathAnim()

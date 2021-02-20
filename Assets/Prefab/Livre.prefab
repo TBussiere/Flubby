@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8640569893173240497}
   m_Layer: 0
   m_Name: Livre
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,5 +205,6 @@ MonoBehaviour:
   crunchDeath: 1
   playerDetected: 0
   groundDetected: 0
+  bookDetected: 0
   mouving: 0
   playerRelativePosition: 0
