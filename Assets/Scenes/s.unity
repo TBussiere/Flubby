@@ -6266,7 +6266,7 @@ SpriteRenderer:
   m_Size: {x: 2.77, y: 2.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!4 &848109243
@@ -6299,6 +6299,7 @@ GameObject:
   - component: {fileID: 849423789}
   - component: {fileID: 849423788}
   - component: {fileID: 849423787}
+  - component: {fileID: 849423791}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6510,6 +6511,20 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &849423791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849423782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc6d1c975bcc4c418dd10d75e06f2d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  speed: 0
 --- !u!4 &850510031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,
@@ -9201,12 +9216,12 @@ PrefabInstance:
     - target: {fileID: 7896300131956848129, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.17
+      value: 48.96
       objectReference: {fileID: 0}
     - target: {fileID: 7896300131956848129, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.87
+      value: -26.61
       objectReference: {fileID: 0}
     - target: {fileID: 7896300131956848129, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
