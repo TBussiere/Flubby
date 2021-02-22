@@ -63,6 +63,11 @@ public class CheckPointsHandler : MonoBehaviour
         }
     }
 
+    internal bool canPlayerWin()
+    {
+        return byhand;
+    }
+
     public void CPpass(GameObject cp)
     {
         if (triggered == false)

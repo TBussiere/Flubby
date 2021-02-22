@@ -2501,7 +2501,6 @@ MonoBehaviour:
   marchesHandler: {fileID: 357229170}
   bc: {fileID: 1404135174}
   camera: {fileID: 849423786}
-  cph: {fileID: 0}
 --- !u!1 &351730422
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,7 +4292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marchesHandler: {fileID: 357229170}
-  timeUntilHand: 3.4
+  timeUntilHand: 4.7
 --- !u!61 &503348448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6524,7 +6523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  speed: 0
+  speed: 10
 --- !u!4 &850510031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146013642555026524, guid: b7482393dd6e1b64fb5451c42e049c21,

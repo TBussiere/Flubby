@@ -7,7 +7,7 @@ public class egoutScript : MonoBehaviour
     public MarchesHandler marchesHandler;
     public BlobController bc;
     public CameraMouvement camera;
-    public CheckPointsHandler cph;
+    CheckPointsHandler cph;
 
     int nbPartPass = 0;
 
@@ -40,7 +40,7 @@ public class egoutScript : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && cph.triggered == false)
+        if (collision.tag == "Player" && cph.canPlayerWin())
         {
             nbPartPass++;
         }
