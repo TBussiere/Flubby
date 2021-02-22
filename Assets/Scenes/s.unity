@@ -1159,12 +1159,12 @@ PrefabInstance:
     - target: {fileID: 7896300131956848129, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.3969
+      value: 67.35
       objectReference: {fileID: 0}
     - target: {fileID: 7896300131956848129, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41.478756
+      value: -40.8
       objectReference: {fileID: 0}
     - target: {fileID: 7896300131956848129, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
@@ -1209,22 +1209,22 @@ PrefabInstance:
     - target: {fileID: 8884259186884903634, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_Size.x
-      value: 4.984884
+      value: 3.8525772
       objectReference: {fileID: 0}
     - target: {fileID: 8884259186884903634, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_Size.y
-      value: 1.3104582
+      value: 0.9869461
       objectReference: {fileID: 0}
     - target: {fileID: 8884259186884903634, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.29035926
+      value: 4.3342934
       objectReference: {fileID: 0}
     - target: {fileID: 8884259186884903634, guid: 8f6e92cb64b8e0e4b90b5460eb58b056,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.2790092
+      value: -1.1282349
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f6e92cb64b8e0e4b90b5460eb58b056, type: 3}
@@ -2501,6 +2501,7 @@ MonoBehaviour:
   marchesHandler: {fileID: 357229170}
   bc: {fileID: 1404135174}
   camera: {fileID: 849423786}
+  cph: {fileID: 0}
 --- !u!1 &351730422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,7 +2856,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -68.63843, y: 11.3011}
+  m_Offset: {x: -69.15562, y: 11.3011}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2866,7 +2867,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 33.164825, y: 24.530018}
+  m_Size: {x: 32.130447, y: 24.530018}
   m_EdgeRadius: 0
 --- !u!114 &357229170
 MonoBehaviour:
@@ -2886,9 +2887,11 @@ MonoBehaviour:
   footstepsSoundDelay: 2
   RedSprite: {fileID: 1510534454}
   Camera: {fileID: 849423786}
+  alarmState: 0
   timerBase: 3
-  safeTimeBase: 1
+  safeTimeBase: 3
   safe: 0
+  state: 0
   timeUntilHand: 3
 --- !u!82 &357229171
 AudioSource:
@@ -4290,7 +4293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marchesHandler: {fileID: 357229170}
-  timeUntilHand: 2
+  timeUntilHand: 3.4
 --- !u!61 &503348448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16846,6 +16849,7 @@ MonoBehaviour:
   refScene: {fileID: 1725551244}
   refBlob: {fileID: 1404135174}
   cameraReset: {fileID: 849423786}
+  triggered: 0
   timerDuration: 1
   timer: 5
 --- !u!1001 &6645161964649990751

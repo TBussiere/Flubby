@@ -15,6 +15,7 @@ public class Marche : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Handler.enableHand();
         if (Passed == false)
         {
             Passed = true;

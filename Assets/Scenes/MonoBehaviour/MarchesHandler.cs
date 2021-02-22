@@ -17,7 +17,7 @@ public class MarchesHandler : MonoBehaviour
     public CameraMouvement Camera;
 
     AudioSource alarm;
-    bool alarmState = false;
+    public bool alarmState = false;
     AudioSource cardiogram;
     AudioSource smallBip;
 
@@ -29,7 +29,7 @@ public class MarchesHandler : MonoBehaviour
 
     public bool safe;
 
-    int state = 0;
+    public int state = 0;
 
     //Rng part
     bool RunningSequence = false;
@@ -129,6 +129,7 @@ public class MarchesHandler : MonoBehaviour
             else if (state == 4)
             {
                 started = false;
+                safe = true;
             }
             else
             {
@@ -140,7 +141,7 @@ public class MarchesHandler : MonoBehaviour
         {
             alarm.enabled = true;
             if (timeUntilHand < 0)
-                hand.Trigger();
+                cph.playReset(ResetEnum.HAND_KILL,hand);//hand.Trigger();
             else
                 timeUntilHand -= Time.deltaTime;
         }
@@ -154,7 +155,10 @@ public class MarchesHandler : MonoBehaviour
 
     public void changeState()
     {
-        state++;
+        if (state < 4)
+        {
+            state++;
+        }
     }
 
     public void playSplouch()
@@ -218,5 +222,10 @@ public class MarchesHandler : MonoBehaviour
     void OnDestroy()
     {
         this.stopAlarm();
+    }
+
+    public void enableHand()
+    {
+        hand.gameObject.SetActive(true);
     }
 }

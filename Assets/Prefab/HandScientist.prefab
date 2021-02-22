@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1852286651}
   m_Layer: 0
   m_Name: hand_quickdraw
-  m_TagString: Untagged
+  m_TagString: Scientist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   crunchDeath: 0
   playerDetected: 0
   groundDetected: 0
+  bookDetected: 0
   mouving: 0
   playerRelativePosition: 0
 --- !u!1 &5331081109663590676
@@ -190,7 +191,7 @@ GameObject:
   - component: {fileID: 2101014103}
   m_Layer: 0
   m_Name: HandScientist
-  m_TagString: Untagged
+  m_TagString: Scientist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -80,10 +80,10 @@ public class CameraMouvement : MonoBehaviour
     {
         float alpha = (Time.time - timer) / zoomSpeed1to2;
         alpha = Mathf.Pow(alpha, 3);
-        Debug.Log(alpha);
+        //Debug.Log(alpha);
 
         Vector3 dist_pos = pos2 - initial_cam_position;
-        Debug.Log(dist_pos);
+        //Debug.Log(dist_pos);
         transform.position = initial_cam_position + dist_pos * alpha;
 
         float dist_size = size_2 - initial_cam_size;

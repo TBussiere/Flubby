@@ -15,7 +15,9 @@ public class CheckPointsHandler : MonoBehaviour
     public CameraMouvement cameraReset;
 
     private GameObject saveScene;
-    private bool triggered = false;
+    public bool triggered = false;
+    private bool gameoverState = false;
+    private bool byhand = false;
     public float timerDuration;
     public float timer;
 
@@ -37,9 +39,16 @@ public class CheckPointsHandler : MonoBehaviour
         this.transform.parent = null;
     }
 
+    internal void GameOver()
+    {
+        gameoverState = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (gameoverState)
+            return;
         if (triggered)
         {
             if (timer > 0)
@@ -49,7 +58,6 @@ public class CheckPointsHandler : MonoBehaviour
             else
             {
                 ResetToCP();
-                triggered = false;
             }
 
         }
@@ -73,12 +81,17 @@ public class CheckPointsHandler : MonoBehaviour
 
     public void ResetToCP()
     {
+        if (gameoverState)
+            return;
         refBlob.reSpawnAt(this.CurrentRespawnLocation);
         Destroy(refScene);
         refScene = saveScene;
         refScene.SetActive(true);
         saveScene = Instantiate(refScene);
         saveScene.SetActive(false);
+        triggered = false;
+        timer = timerDuration;
+        byhand = false;
 
         if (cameraReset)
         {
@@ -87,8 +100,10 @@ public class CheckPointsHandler : MonoBehaviour
     }
 
 
-    public void playReset(ResetEnum AnimType = ResetEnum.ANIME_EXPLODE)
+    public void playReset(ResetEnum AnimType = ResetEnum.ANIME_EXPLODE, ScientistHand hand = null)
     {
+        if (gameoverState)
+            return;
         if (triggered == false)
         {
             triggered = true;
@@ -100,10 +115,26 @@ public class CheckPointsHandler : MonoBehaviour
                 case ResetEnum.ANIME_EXPLODE:
                     deathAnim();
                     break;
+                case ResetEnum.HAND_KILL:
+                    hand.Trigger();
+                    byhand = true;
+                    timer = 1.5f;
+                    break;
                 default:
                     break;
             }
+            if (!byhand)
+            {
+                timer = timerDuration;
+            }
+            
+        }
+        else if(byhand && AnimType == ResetEnum.ANIME_EXPLODE)
+        {
+            byhand = false;
+            deathAnim();
             timer = timerDuration;
         }
+
     }
 }
