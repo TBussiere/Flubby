@@ -6212,9 +6212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47af98d3fd21dc46a0275d7f747f374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0.5, y: 0.6}
-  still: {fileID: 21300000, guid: b35b658431999f64dba55765677169fc, type: 3}
-  holding: {fileID: 21300000, guid: 4a783c55271b8444dbab608a61db1bc4, type: 3}
+  open: {fileID: 2800000, guid: b35b658431999f64dba55765677169fc, type: 3}
+  grab: {fileID: 2800000, guid: 4a783c55271b8444dbab608a61db1bc4, type: 3}
+  offset: {x: 26, y: 64}
 --- !u!212 &848109242
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6391,8 +6391,8 @@ MonoBehaviour:
   size_1: 13.27
   offsetLvl1: {x: 5, y: 5, z: 0}
   zoomSpeed2to1: 1
-  size_2: 42.25
-  pos2: {x: 177, y: -100, z: -80}
+  size_2: 34
+  pos2: {x: 194.4, y: -104, z: -80}
 --- !u!114 &849423787
 MonoBehaviour:
   m_ObjectHideFlags: 0
