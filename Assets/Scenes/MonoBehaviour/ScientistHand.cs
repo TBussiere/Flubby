@@ -47,6 +47,10 @@ public class ScientistHand : MonoBehaviour
     void GetDown()
     {
         transform.position = transform.position - new Vector3(0, down_speed, 0);
+        if (transform.position.y < -127)
+        {
+            transform.position = new Vector3(transform.position.x, -127, 0);
+        }
     }
 
     void GetUp()
