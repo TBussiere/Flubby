@@ -2889,7 +2889,7 @@ MonoBehaviour:
   Camera: {fileID: 849423786}
   alarmState: 0
   timerBase: 3
-  safeTimeBase: 3
+  safeTimeBase: 1
   safe: 0
   state: 0
   timeUntilHand: 3
