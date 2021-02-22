@@ -75,7 +75,7 @@ public class MarchesHandler : MonoBehaviour
             audioSources[0].PlayDelayed(footstepsSoundDelay);
             audioSources[1].enabled = true;
 
-            Camera.enabled = true;
+            Camera.zoom_in = true;
         }
     }
 

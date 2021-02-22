@@ -11,6 +11,8 @@ public class Visibility : MonoBehaviour
     public GameObject cover_v1;
     public GameObject cover_v2;
 
+    public CameraMouvement cm;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,6 +31,7 @@ public class Visibility : MonoBehaviour
         {
             if (v1_to_v2)
             {
+                cm.SwitchView();
                 cover_v1.SetActive(true);
             }
             else
@@ -41,6 +44,7 @@ public class Visibility : MonoBehaviour
         {
             if (v2_to_v1)
             {
+                cm.SwitchView();
                 cover_v2.SetActive(true);
             }
             else
