@@ -22,7 +22,7 @@ public class Traveling : MonoBehaviour
             pos = transform.position;
             cam.enabled = false;
             trav = true;
-            transform.position = new Vector3(151, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 151, transform.position.y, transform.position.z);
         }
         if (trav)
         {
