@@ -37,6 +37,7 @@ public class ScientistHand : MonoBehaviour
         {
             triggered = true;
         }
+        
     }
 
     void ComputeBlobPosition()
