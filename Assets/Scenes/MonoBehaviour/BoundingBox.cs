@@ -79,6 +79,16 @@ public class BoundingBox : MonoBehaviour
         else
             clicked = false;
 
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            coef_max = Mathf.Min(8f, coef_max + 0.2f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            coef_max = Mathf.Max(0.7f, coef_max - 0.2f);
+        }
+
     }
 
     GameObject GetClosestParticule(Vector2 MousePos)

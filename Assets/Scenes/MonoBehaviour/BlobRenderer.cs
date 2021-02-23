@@ -50,12 +50,12 @@ public class BlobRenderer : MonoBehaviour
     {
         ComputeGridSize();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             square_size = Mathf.Min(0.6f, square_size + 0.05f);
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             square_size = Mathf.Max(0.1f, square_size - 0.05f);
         }
