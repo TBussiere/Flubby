@@ -6490,7 +6490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca15921bc8a97429d4b9d209d14e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  square_size: 0.4
+  square_size: 0.25
   radius_blob: 0.7
   blob: {fileID: 1404135173}
   blob_bb: {fileID: 16072961}

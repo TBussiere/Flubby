@@ -123,6 +123,8 @@ public class MarchesHandler : MonoBehaviour
                     else
                     {
                         blankTimer -= Time.deltaTime;
+                        safe = false;
+                        RedSprite.SetActive(true);
                     }
                 }
             }
@@ -130,6 +132,7 @@ public class MarchesHandler : MonoBehaviour
             {
                 started = false;
                 safe = true;
+                RedSprite.SetActive(false);
             }
             else
             {
